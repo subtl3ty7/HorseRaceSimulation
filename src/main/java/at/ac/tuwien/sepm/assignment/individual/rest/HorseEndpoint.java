@@ -72,8 +72,8 @@ public class HorseEndpoint {
             LOGGER.error("Error during insertion of horse data");
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error during insertion of horse data",e);
         } catch (IllegalArgumentException e){
-            LOGGER.error("Mandatory field name is missing");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Mandatory field name is missing",e);
+            LOGGER.error("Mandatory field is missing or entered wrong type of value");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Mandatory field is missing or entered a wrong type of value",e);
         }
 
 

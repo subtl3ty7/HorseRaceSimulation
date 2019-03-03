@@ -47,10 +47,21 @@ public class HorseService implements IHorseService {
         }
 
         if(horse.getMinSpeed() == null){
-            horse.setMinSpeed(-1.0);
+            LOGGER.error("Problem with an Argument!");
+            throw new IllegalArgumentException("Minimum Speed field is missing!");
         }
         if(horse.getMaxSpeed() == null){
-            horse.setMaxSpeed(-1.0);
+            LOGGER.error("Problem with an Argument!");
+            throw new IllegalArgumentException("Maximum Speed field is missing!");
+        }
+
+        if(horse.getMinSpeed() < 40 || horse.getMinSpeed() > 60){
+            LOGGER.error("Problem with an Argument!");
+            throw new IllegalArgumentException("Minimum Speed value is out of bounds!");
+        }
+        if(horse.getMaxSpeed() < 40 || horse.getMaxSpeed() > 60){
+            LOGGER.error("Problem with an Argument!");
+            throw new IllegalArgumentException("Maximum Speed value is out of bounds!");
         }
 
         try{
