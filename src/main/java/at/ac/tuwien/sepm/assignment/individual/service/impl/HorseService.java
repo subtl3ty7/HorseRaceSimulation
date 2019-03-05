@@ -33,45 +33,108 @@ public class HorseService implements IHorseService {
     }
 
 
-
-
     @Override
     public Horse insertHorseToDB(Horse horse) throws ServiceException {
         LOGGER.info("Insert horse: " + horse.toString());
-        if(horse.getName() == null){
+        if (horse.getName() == null) {
             LOGGER.error("Problem with an Argument!");
             throw new IllegalArgumentException("Name field is missing!");
         }
-        if(horse.getBreed() == null){
+        if (horse.getBreed() == null) {
             horse.setBreed("Not Specified");
         }
 
-        if(horse.getMinSpeed() == null){
+        if (horse.getMinSpeed() == null) {
             LOGGER.error("Problem with an Argument!");
             throw new IllegalArgumentException("Minimum Speed field is missing!");
         }
-        if(horse.getMaxSpeed() == null){
+        if (horse.getMaxSpeed() == null) {
             LOGGER.error("Problem with an Argument!");
             throw new IllegalArgumentException("Maximum Speed field is missing!");
         }
 
-        if(horse.getMinSpeed() < 40 || horse.getMinSpeed() > 60){
+        if (horse.getMinSpeed() < 40 || horse.getMinSpeed() > 60) {
             LOGGER.error("Problem with an Argument!");
             throw new IllegalArgumentException("Minimum Speed value is out of bounds!");
         }
-        if(horse.getMaxSpeed() < 40 || horse.getMaxSpeed() > 60){
+        if (horse.getMaxSpeed() < 40 || horse.getMaxSpeed() > 60) {
             LOGGER.error("Problem with an Argument!");
             throw new IllegalArgumentException("Maximum Speed value is out of bounds!");
         }
 
-        try{
+        if (horse.getMinSpeed() > horse.getMaxSpeed()){
+            LOGGER.error("Problem with an Argument!");
+            throw new IllegalArgumentException(("Minimum Speed can't be bigger than Max Speed!"));
+        }
+
+        try {
             Horse horseResponse = horseDao.insertHorseToDB(horse);
             LOGGER.info("Horse insertion validated.");
             return horseResponse;
-        } catch(PersistenceException e) {
+        } catch (PersistenceException e) {
             LOGGER.error("Database Error occurred during insertion!");
-            throw new ServiceException(e.getMessage(),e);
+            throw new ServiceException(e.getMessage(), e);
         }
 
+    }
+
+    @Override
+    public Horse changeHorseData(Integer id, Horse horse) throws ServiceException, NotFoundException {
+        LOGGER.info("Update horse id: " + id);
+
+        try {
+            Horse horseOld = horseDao.findOneById(id);
+            if (horse.getName() == null) {
+                horse.setName(horseOld.getName());
+            }
+            if(horse.getBreed() == null){
+                horse.setBreed(horseOld.getBreed());
+            }
+
+            if(horse.getMinSpeed() == null){
+                horse.setMinSpeed(horseOld.getMinSpeed());
+            }
+            if(horse.getMaxSpeed() == null){
+                horse.setMaxSpeed(horseOld.getMaxSpeed());
+            }
+            if(horse.getCreated() != null){
+                LOGGER.info("User cannot adjust the creation date of horse! " +
+                    "This field will be ignored and replaced with actual creation date!");
+            }
+            horse.setCreated(horseOld.getCreated());
+            if(horse.getMinSpeed() < 40 || horse.getMinSpeed() > 60){
+                LOGGER.error("Problem with an Argument!");
+                throw new IllegalArgumentException("Minimum Speed value is out of bounds!");
+            }
+            if(horse.getMaxSpeed() < 40 || horse.getMaxSpeed() > 60){
+                LOGGER.error("Problem with an Argument!");
+                throw new IllegalArgumentException("Maximum Speed value is out of bounds!");
+            }
+            if (horse.getMinSpeed() > horse.getMaxSpeed()){
+                LOGGER.error("Problem with an Argument!");
+                throw new IllegalArgumentException(("Minimum Speed can't be bigger than Max Speed!"));
+            }
+
+            Horse horseResponse = horseDao.changeHorseData(id,horse);
+            LOGGER.info("Horse update validated.");
+            return horseResponse;
+
+        } catch (PersistenceException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
+
+
+    }
+
+
+
+    @Override
+    public void deleteHorse(Integer id) throws ServiceException, NotFoundException {
+        LOGGER.info("Delete horse id: " + id);
+        try{
+            horseDao.deleteHorse(id);
+        } catch (PersistenceException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 }

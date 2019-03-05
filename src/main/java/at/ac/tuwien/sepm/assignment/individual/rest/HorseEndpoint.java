@@ -34,6 +34,7 @@ public class HorseEndpoint {
      * Finds a horse by its id by passing the id to Service Layer.
      * If successful, returns the DTO transformed seeked Horse.
      * Mapped to HTTP GET requests from client.
+     *
      * @param id which belongs to the horse user wants to find.
      * @return DTO of the found horse.
      */
@@ -53,8 +54,9 @@ public class HorseEndpoint {
     /**
      * Gets a Horse DTO and passes it to Service Layer for Validation and Business Logic.
      * Mapped to HTTP POST requests from client.
+     *
      * @param horse is the DTO which we want to insert the database.
-     * @return
+     * @return DTO of the inserted horse.
      */
 
     @RequestMapping( method = RequestMethod.POST)
@@ -78,5 +80,65 @@ public class HorseEndpoint {
 
 
     }
+
+    /**
+     * Gets a HorseDto object and an id of a horse to change the values of the horse with that specific id. Horse Entity
+     * is passed to Service Layer and function returns our altered HorseDto.
+     * Mapped to HTTP PUT requests from client.
+     * @param id of the horse to be changed.
+     * @param horse is the HorseDto which contains the information that we want to change.
+     * @return DTO of the changed horse.
+     */
+
+
+    @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public HorseDto changeHorseData(@PathVariable("id") Integer id, @RequestBody HorseDto horse) {
+        LOGGER.info("PUT" + BASE_URL);
+        horse.setUpdated(LocalDateTime.now());
+        try {
+            HorseDto horseResponse = horseMapper.entityToDto(horseService.changeHorseData(id,horseMapper.dtoToEntity(horse)));
+            LOGGER.info("Horse updated");
+            return horseResponse;
+
+        } catch (ServiceException e) {
+            LOGGER.error("Error during update of the horse.");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"Error during update of the horse",e);
+        } catch (IllegalArgumentException e) {
+            LOGGER.error("ID is missing or entered wrong type of value");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"ID is missing or entered wrong type of value",e);
+        } catch (NotFoundException e){
+            LOGGER.error("Error during reading horse");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error during reading horse: " + e.getMessage(), e);
+    }
+    }
+
+    /**
+     *
+     * @param id
+     */
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public void deleteHorse(@PathVariable("id") Integer id) {
+        LOGGER.info("DELETE" + BASE_URL);
+        try{
+            horseService.deleteHorse(id);
+        } catch (ServiceException e) {
+            LOGGER.error("Error during deleting the horse.");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"Error during deleting the horse",e);
+        } catch (IllegalArgumentException e) {
+            LOGGER.error("Id is missing or entered wrong type of value.");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Id is missing or entered wrong type of value",e);
+        } catch (NotFoundException e){
+            LOGGER.error("Error during reading horse.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error during deleting horse: " + e.getMessage(), e);
+        }
+    }
+
+
+
+
 
 }

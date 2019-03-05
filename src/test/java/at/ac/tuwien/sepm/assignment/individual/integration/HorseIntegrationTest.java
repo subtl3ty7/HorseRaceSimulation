@@ -111,4 +111,5 @@ public class HorseIntegrationTest {
         REST_TEMPLATE.postForObject(BASE_URL + port + HORSE_URL, new HttpEntity<>(HORSE_2), HorseTestDto.class);
     }
 
+
 }

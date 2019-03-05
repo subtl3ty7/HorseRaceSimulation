@@ -59,11 +59,10 @@ public class HorseDao implements IHorseDao {
         if (horse != null) {
             return horse;
         } else {
+            LOGGER.error("Could not find horse with id: " + id);
             throw new NotFoundException("Could not find horse with id " + id);
         }
     }
-
-
 
 
 
@@ -96,8 +95,9 @@ public class HorseDao implements IHorseDao {
             LOGGER.info("Horse with id " + horseResponse.getId() + " is successfully inserted.");
 
             return horseResponse;
+
         } catch (SQLException e) {
-            LOGGER.error("Problem while executing SQL select statement for inserting horse: " + horse.toString(), e);
+            LOGGER.error("Problem while executing SQL statement for inserting horse: " + horse.toString(), e);
             throw new PersistenceException("Could not insert horse: " + horse.toString(), e);
         }
 
@@ -105,5 +105,64 @@ public class HorseDao implements IHorseDao {
 
     }
 
+
+
+    @Override
+    public Horse changeHorseData(Integer id,Horse horse) throws PersistenceException,NotFoundException {
+        LOGGER.info("Update horse: " + id);
+        String sql = "UPDATE Horse SET name = ?, breed = ?, min_speed = ?, max_speed = ?,created = ?, updated = ?)";
+        String responseSQL = "SELECT * FROM Horse WHERE Id = ?;";
+        Horse horseResponse = null;
+        try {
+            PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+            statement.setString(1, horse.getName());
+            statement.setString(2, horse.getBreed());
+            statement.setDouble(3, horse.getMinSpeed());
+            statement.setDouble(4, horse.getMaxSpeed());
+            statement.setTimestamp(5, Timestamp.valueOf(horse.getCreated()));
+            statement.setTimestamp(6, Timestamp.valueOf(horse.getUpdated()));
+            statement.executeUpdate();
+            statement.close();
+
+            PreparedStatement statement1 = dbConnectionManager.getConnection().prepareStatement(responseSQL);
+            statement1.setInt(1,id);
+            ResultSet result = statement1.executeQuery();
+            while (result.next()) {
+                horseResponse = dbResultToHorseDto(result);
+            }
+            statement1.close();
+            LOGGER.info("Horse with id " + id + " is successfully inserted.");
+
+        } catch (SQLException e ) {
+            LOGGER.error("Problem while executing SQL statement for update horse: " + horse.toString(), e);
+            throw new PersistenceException("Could not update horse: " + horse.toString(), e);
+        }
+        if (horseResponse != null) {
+            return horseResponse;
+        } else {
+            LOGGER.error("Could not find horse with id: " + id);
+            throw new NotFoundException("Could not find horse with id " + id);
+        }
+    }
+
+
+    @Override
+    public void deleteHorse(Integer id)throws PersistenceException,NotFoundException {
+        LOGGER.info("Delete horse with id " + id);
+        Horse horseCheck = findOneById(id);
+        String sql = "DELETE FROM Horse WHERE id=?";
+
+        try{
+            PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+            statement.setInt(1,id);
+            statement.executeUpdate();
+            statement.close();
+            LOGGER.info("Deleted horse with id " + id);
+        } catch (SQLException e) {
+            LOGGER.error("Problem while executing SQL statement for delete horse: " + id, e);
+            throw new PersistenceException("Could not delete horse: " + id, e);
+        }
+
+    }
 
 }
