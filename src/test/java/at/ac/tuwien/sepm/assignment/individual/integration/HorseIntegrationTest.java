@@ -103,6 +103,9 @@ public class HorseIntegrationTest {
         assertEquals(1, horses.size());
     }
 
+   // @Test
+    //public void postTwoHorses_thenFilterSearch
+
     private void postHorse1() {
         REST_TEMPLATE.postForObject(BASE_URL + port + HORSE_URL, new HttpEntity<>(HORSE_1), HorseTestDto.class);
     }
@@ -110,6 +113,7 @@ public class HorseIntegrationTest {
     private void postHorse2() {
         REST_TEMPLATE.postForObject(BASE_URL + port + HORSE_URL, new HttpEntity<>(HORSE_2), HorseTestDto.class);
     }
+
 
 
 }

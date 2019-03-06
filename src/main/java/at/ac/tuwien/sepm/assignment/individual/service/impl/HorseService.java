@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class HorseService implements IHorseService {
 
@@ -137,4 +139,42 @@ public class HorseService implements IHorseService {
             throw new ServiceException(e.getMessage(), e);
         }
     }
+
+
+
+
+    @Override
+    public List<Horse> getAllHorses() throws ServiceException, NotFoundException {
+        LOGGER.info("Get all horses");
+        try {
+            return horseDao.getAllHorses();
+        }
+        catch (PersistenceException e) {
+            throw new ServiceException(e.getMessage(),e);
+        }
+    }
+    @Override
+    public List<Horse> getAllHorsesFiltered(Horse horse) throws ServiceException, NotFoundException{
+        LOGGER.info("Get all horses with filter: " + horse.toString());
+        if(horse.getMinSpeed() == null){
+            horse.setMinSpeed(40.0);
+        }
+        if(horse.getMaxSpeed() == null){
+            horse.setMaxSpeed(60.0);
+        }
+        if(horse.getName() == null){
+            horse.setName("");
+        }
+        if(horse.getBreed() == null){
+            horse.setBreed("");
+        }
+        try {
+            return horseDao.getAllHorsesFiltered(horse);
+        } catch(PersistenceException e) {
+            throw new ServiceException(e.getMessage(),e);
+        }
+    }
+
+
+
 }

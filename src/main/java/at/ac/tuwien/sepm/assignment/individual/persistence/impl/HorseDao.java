@@ -15,6 +15,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.LinkedList;
+import java.util.List;
 
 
 @Repository
@@ -163,6 +165,88 @@ public class HorseDao implements IHorseDao {
             throw new PersistenceException("Could not delete horse: " + id, e);
         }
 
+    }
+
+    /**
+     *
+     * @return
+     * @throws PersistenceException
+     * @throws NotFoundException
+     */
+
+    @Override
+    public List<Horse> getAllHorses() throws PersistenceException, NotFoundException {
+        LOGGER.info("Get all Horses");
+        String sql = "SELECT * FROM Horse";
+        List<Horse> horses = new LinkedList<>();
+        try {
+            PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while(result.next()){
+                horses.add(dbResultToHorseDto(result));
+            }
+
+            if(horses.isEmpty()){
+                LOGGER.error("Could not find any horses in database");
+                throw new NotFoundException("Could not find any horses in database");
+            }
+
+            return horses;
+        } catch (SQLException e) {
+            LOGGER.error("Problem while executing SQL statement for getting all horses", e);
+            throw new PersistenceException("Could not get horses",e);
+        }
+
+
+
+
+    }
+
+
+    @Override
+    public List<Horse> getAllHorsesFiltered(Horse horse) throws PersistenceException, NotFoundException{
+        LOGGER.info("Get all Horses filtered with: " + horse.toString());
+        String sql;
+        List<Horse> horses = new LinkedList<>();
+        try {
+            PreparedStatement statement;
+            if (horse.getId() == null) {
+                sql = "SELECT * FROM Horse WHERE name LIKE %?% AND breed LIKE %?% AND min_speed >= ? AND max_speed <= ?";
+                statement = dbConnectionManager.getConnection().prepareStatement(sql);
+                statement.setString(1,horse.getName());
+                statement.setString(2,horse.getBreed());
+                statement.setDouble(3,horse.getMinSpeed());
+                statement.setDouble(4,horse.getMaxSpeed());
+
+            } else {
+                sql = "SELECT * FROM Horse WHERE id = ? AND name LIKE %?% AND breed LIKE %?% AND min_speed >= ? AND max_speed <= ?";
+                statement = dbConnectionManager.getConnection().prepareStatement(sql);
+                statement.setInt(1,horse.getId());
+                statement.setString(2,horse.getName());
+                statement.setString(3,horse.getBreed());
+                statement.setDouble(4,horse.getMinSpeed());
+                statement.setDouble(5,horse.getMaxSpeed());
+            }
+
+
+
+            ResultSet result = statement.executeQuery();
+
+            while(result.next()){
+                horses.add(dbResultToHorseDto(result));
+            }
+
+            if(horses.isEmpty()){
+                LOGGER.error("Could not find any horses with given filters in database");
+                throw new NotFoundException("Could not find any horses with given filters in database");
+            }
+
+        } catch(SQLException e){
+            LOGGER.error("Problem while executing SQL statement for getting filtered horses", e);
+            throw new PersistenceException("Could not get horses",e);
+        }
+
+        return horses;
     }
 
 }

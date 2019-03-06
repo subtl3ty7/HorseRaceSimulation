@@ -5,6 +5,8 @@ import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.persistence.exceptions.PersistenceException;
 import at.ac.tuwien.sepm.assignment.individual.rest.dto.HorseDto;
 
+import java.util.List;
+
 public interface IHorseDao {
 
     /**
@@ -39,10 +41,24 @@ public interface IHorseDao {
     Horse changeHorseData(Integer id,Horse horse) throws PersistenceException,NotFoundException;
 
     /**
+     * Gets an id and deletes the horse from database with the corresponding id.
      *
-     * @param id
-     * @throws PersistenceException
-     * @throws NotFoundException
+     * @param id of the horse to be deleted.
+     * @throws PersistenceException will be thrown if something goes wrong during the database access.
+     * @throws NotFoundException will be thrown if the horse could not be found in the database.
      */
     void deleteHorse(Integer id) throws PersistenceException,NotFoundException;
+
+
+    /**
+     * Returns a list of all the horses in database.
+     *
+     * @return values is the list of horses in database.
+     * @throws PersistenceException will be thrown if something goes wrong during the database access.
+     * @throws NotFoundException will be thrown if database is empty.
+     */
+    List<Horse> getAllHorses() throws PersistenceException, NotFoundException;
+
+
+    List<Horse> getAllHorsesFiltered(Horse horse) throws PersistenceException, NotFoundException;
 }

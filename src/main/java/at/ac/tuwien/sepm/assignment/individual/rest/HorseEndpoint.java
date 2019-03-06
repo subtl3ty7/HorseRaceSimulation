@@ -4,6 +4,7 @@ import at.ac.tuwien.sepm.assignment.individual.rest.dto.HorseDto;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.service.IHorseService;
 import at.ac.tuwien.sepm.assignment.individual.service.exceptions.ServiceException;
+import at.ac.tuwien.sepm.assignment.individual.service.impl.HorseService;
 import at.ac.tuwien.sepm.assignment.individual.util.mapper.HorseMapper;
 import org.apache.tomcat.jni.Local;
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/horses")
@@ -59,7 +61,7 @@ public class HorseEndpoint {
      * @return DTO of the inserted horse.
      */
 
-    @RequestMapping( method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public HorseDto insertHorseToDatabase(@RequestBody HorseDto horse) {
@@ -85,6 +87,7 @@ public class HorseEndpoint {
      * Gets a HorseDto object and an id of a horse to change the values of the horse with that specific id. Horse Entity
      * is passed to Service Layer and function returns our altered HorseDto.
      * Mapped to HTTP PUT requests from client.
+     *
      * @param id of the horse to be changed.
      * @param horse is the HorseDto which contains the information that we want to change.
      * @return DTO of the changed horse.
@@ -115,8 +118,10 @@ public class HorseEndpoint {
     }
 
     /**
+     * Takes the id of the horse which should be deleted and passes it to Service Layer.
+     * Mapped to HTTP DELETE requests from client.
      *
-     * @param id
+     * @param id of the horse to be deleted.
      */
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
@@ -137,7 +142,46 @@ public class HorseEndpoint {
         }
     }
 
+    /**
+     * Returns all the horses from database.
+     * Mapped to HTTP GET requests from client.
+     *
+     * @return value is the list of HorseDtos.
+     */
 
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<HorseDto> getAllHorses() {
+        try {
+            return horseMapper.listEntityToDTO(horseService.getAllHorses());
+        } catch (ServiceException e) {
+            LOGGER.error("Error during getting horses.");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"Error during getting horses",e);
+        } catch (NotFoundException e){
+            LOGGER.error("Error during reading horses.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error during getting horses: " + e.getMessage(), e);
+        }
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET,params = {"name","breed","minSpeed","maxSpeed"})
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<HorseDto> getAllHorsesFiltered(@PathVariable("name") String name,@PathVariable("breed") String breed,
+                                               @PathVariable("minSpeed") Double minSpeed, @PathVariable("maxSpeed") Double maxSpeed) {
+        try {
+            HorseDto horseDTO = new HorseDto(null,name,breed,minSpeed,maxSpeed,null,null);
+            return horseMapper.listEntityToDTO(horseService.getAllHorsesFiltered(horseMapper.dtoToEntity(horseDTO)));
+        } catch (ServiceException e) {
+            LOGGER.error("Error during getting horses.");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"Error during getting horses",e);
+        } catch (NotFoundException e){
+            LOGGER.error("Error during reading horses.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error during getting horses: " + e.getMessage(), e);
+        }
+
+    }
 
 
 

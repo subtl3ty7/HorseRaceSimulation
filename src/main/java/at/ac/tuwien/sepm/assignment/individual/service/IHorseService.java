@@ -4,6 +4,8 @@ import at.ac.tuwien.sepm.assignment.individual.entity.Horse;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.service.exceptions.ServiceException;
 
+import java.util.List;
+
 public interface IHorseService {
 
     /**
@@ -41,10 +43,23 @@ public interface IHorseService {
     Horse changeHorseData(Integer id,Horse horse) throws ServiceException,NotFoundException;
 
     /**
+     * Gets the id of a horse and passes it to Persistence Layer on purpose of deleting.
      *
-     * @param id
-     * @throws ServiceException
-     * @throws NotFoundException
+     * @param id of the horse to be deleted.
+     * @throws ServiceException will be thrown if something goes wrong during the data processing.
+     * @throws NotFoundException will be thrown if the Horse which user wants to delete is not found in the system.
      */
     void deleteHorse(Integer id) throws ServiceException,NotFoundException;
+
+
+    /**
+     * Returns all the horses from database.
+     *
+     * @return value is the list of all Horses.
+     * @throws ServiceException will be thrown if something goes wrong during the data processing.
+     * @throws NotFoundException will be thrown if there is no horse in the system.
+     */
+    List<Horse> getAllHorses() throws ServiceException, NotFoundException;
+
+    List<Horse> getAllHorsesFiltered(Horse horse) throws ServiceException, NotFoundException;
 }
