@@ -113,7 +113,7 @@ public class HorseDao implements IHorseDao {
     public Horse changeHorseData(Integer id,Horse horse) throws PersistenceException,NotFoundException {
         LOGGER.info("Update horse: " + id);
         String sql = "UPDATE Horse SET name = ?, breed = ?, min_speed = ?, max_speed = ?,created = ?, updated = ? WHERE id = ?";
-        String responseSQL = "SELECT * FROM Horse WHERE Id = ?;";
+        String responseSQL = "SELECT * FROM Horse WHERE Id = ?";
         Horse horseResponse = null;
         try {
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
@@ -154,34 +154,12 @@ public class HorseDao implements IHorseDao {
         LOGGER.info("Delete horse with id " + id);
         Horse horseCheck = findOneById(id);
         String sql = "DELETE FROM Horse WHERE id=?";
-        String sql2 = "SELECT COUNT(*) FROM Horse";
-        String sql3 = "UPDATE Horse SET id = id - 1 WHERE id > ? ";
-        String sql4 = "ALTER SEQUENCE seq_1 RESTART WITH ?";
         try{
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
             statement.setInt(1,id);
             statement.executeUpdate();
             statement.close();
 
-
-            PreparedStatement statement3 = dbConnectionManager.getConnection().prepareStatement(sql3);
-            statement3.setInt(1,id);
-            statement3.executeUpdate();
-            statement3.close();
-
-            PreparedStatement statement2 = dbConnectionManager.getConnection().prepareStatement(sql2);
-
-            ResultSet result = statement2.executeQuery();
-            int count = 0;
-            while(result.next()) {
-                count = result.getInt(1);
-            }
-            statement2.close();
-
-            PreparedStatement statement4 = dbConnectionManager.getConnection().prepareStatement(sql4);
-            statement4.setInt(1,count+1);
-            statement4.executeUpdate();
-            statement4.close();
             LOGGER.info("Deleted horse with id " + id);
         } catch (SQLException e) {
             LOGGER.error("Problem while executing SQL statement for delete horse: " + id, e);
@@ -190,12 +168,7 @@ public class HorseDao implements IHorseDao {
 
     }
 
-    /**
-     *
-     * @return
-     * @throws PersistenceException
-     * @throws NotFoundException
-     */
+
 
     @Override
     public List<Horse> getAllHorses() throws PersistenceException, NotFoundException {
