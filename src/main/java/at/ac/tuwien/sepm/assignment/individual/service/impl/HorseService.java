@@ -38,7 +38,7 @@ public class HorseService implements IHorseService {
     @Override
     public Horse insertHorseToDB(Horse horse) throws ServiceException {
         LOGGER.info("Insert horse: " + horse.toString());
-        if (horse.getName() == null) {
+        if (horse.getName() == null || horse.getName() == "") {
             LOGGER.error("Problem with an Argument!");
             throw new IllegalArgumentException("Name field is missing!");
         }

@@ -37,9 +37,9 @@ public class JockeyService implements IJockeyService {
     @Override
     public Jockey insertJockeyToDB(Jockey jockey) throws ServiceException {
         LOGGER.info("Insert jockey: " + jockey.toString());
-        if (jockey.getName() == null) {
+        if (jockey.getName() == null || jockey.getName() == "") {
             LOGGER.error("Problem with an Argument!");
-            throw new IllegalArgumentException("Name field is missing!");
+            throw new IllegalArgumentException("Name must be set!");
         }
 
         if (jockey.getSkill() == null) {
