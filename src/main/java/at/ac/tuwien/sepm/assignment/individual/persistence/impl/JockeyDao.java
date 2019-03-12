@@ -14,7 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -161,7 +161,7 @@ public class JockeyDao implements IJockeyDao{
     public List<Jockey> getAllJockeys() throws PersistenceException, NotFoundException {
         LOGGER.info("Get all Jockeys");
         String sql = "SELECT * FROM Jockey";
-        List<Jockey> jockeys = new LinkedList<>();
+        List<Jockey> jockeys = new ArrayList<>();
         try {
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
             ResultSet result = statement.executeQuery();
@@ -189,7 +189,7 @@ public class JockeyDao implements IJockeyDao{
     public List<Jockey> getAllJockeysFiltered(Jockey jockey) throws PersistenceException, NotFoundException{
         LOGGER.info("Get all Jockeys filtered with: " + jockey.toString());
         String sql;
-        List<Jockey> jockeys = new LinkedList<>();
+        List<Jockey> jockeys = new ArrayList<>();
         try {
             PreparedStatement statement;
             if (jockey.getId() == null) {

@@ -4,7 +4,7 @@ import at.ac.tuwien.sepm.assignment.individual.rest.dto.HorseDto;
 import at.ac.tuwien.sepm.assignment.individual.entity.Horse;
 import org.springframework.stereotype.Component;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -37,7 +37,7 @@ public class HorseMapper {
      * @return value is a list of horse DTOs.
      */
     public List<HorseDto> listEntityToDTO(List<Horse> horseList){
-        List<HorseDto> horseDtos = new LinkedList<>();
+        List<HorseDto> horseDtos = new ArrayList<>();
         for (Horse horse: horseList) {
             horseDtos.add(entityToDto(horse));
         }

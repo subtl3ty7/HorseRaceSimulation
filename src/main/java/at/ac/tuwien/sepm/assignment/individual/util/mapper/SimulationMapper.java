@@ -4,7 +4,7 @@ import at.ac.tuwien.sepm.assignment.individual.entity.Simulation;
 import at.ac.tuwien.sepm.assignment.individual.rest.dto.SimulationDto;
 import org.springframework.stereotype.Component;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -37,7 +37,7 @@ public class SimulationMapper {
      * @return value is a list of simulation DTOs.
      */
     public List<SimulationDto> listEntityToDTO(List<Simulation> simulationList){
-        List<SimulationDto> simulationDtos = new LinkedList<>();
+        List<SimulationDto> simulationDtos = new ArrayList<>();
         for (Simulation simulation : simulationList) {
             simulationDtos.add(entityToDto(simulation));
         }

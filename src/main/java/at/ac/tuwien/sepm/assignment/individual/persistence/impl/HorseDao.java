@@ -15,7 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -174,7 +174,7 @@ public class HorseDao implements IHorseDao {
     public List<Horse> getAllHorses() throws PersistenceException, NotFoundException {
         LOGGER.info("Get all Horses");
         String sql = "SELECT * FROM Horse";
-        List<Horse> horses = new LinkedList<>();
+        List<Horse> horses = new ArrayList<>();
         try {
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
             ResultSet result = statement.executeQuery();
@@ -203,7 +203,7 @@ public class HorseDao implements IHorseDao {
     public List<Horse> getAllHorsesFiltered(Horse horse) throws PersistenceException, NotFoundException{
         LOGGER.info("Get all Horses filtered with: " + horse.toString());
         String sql;
-        List<Horse> horses = new LinkedList<>();
+        List<Horse> horses = new ArrayList<>();
         try {
             PreparedStatement statement;
             if (horse.getId() == null) {
