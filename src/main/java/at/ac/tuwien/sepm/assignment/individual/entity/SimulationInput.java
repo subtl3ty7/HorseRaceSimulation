@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
-public class Simulation {
+public class SimulationInput {
 
     private String name;
     private List<SimulationParticipant> simulationParticipants;
@@ -12,11 +12,11 @@ public class Simulation {
 
 
 
-    public Simulation(){}
+    public SimulationInput(){}
 
 
 
-    public Simulation(String name,List<SimulationParticipant> simulationParticipants,LocalDateTime created){
+    public SimulationInput(String name, List<SimulationParticipant> simulationParticipants, LocalDateTime created){
 
         this.name = name;
         this.created = created;
@@ -53,11 +53,11 @@ public class Simulation {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Simulation)) return false;
-        Simulation simulation = (Simulation) o;
-        return Objects.equals(name, simulation.name) &&
-            Objects.equals(simulationParticipants, simulation.simulationParticipants) &&
-            Objects.equals(created, simulation.created);
+        if (!(o instanceof SimulationInput)) return false;
+        SimulationInput simulationInput = (SimulationInput) o;
+        return Objects.equals(name, simulationInput.name) &&
+            Objects.equals(simulationParticipants, simulationInput.simulationParticipants) &&
+            Objects.equals(created, simulationInput.created);
     }
 
     @Override
@@ -68,9 +68,9 @@ public class Simulation {
 
     @Override
     public String toString() {
-        return "Simulation{" +
+        return "SimulationInput{" +
             ", name='" + name + '\'' +
-            ", Simulation Participants=" + simulationParticipants +
+            ", SimulationInput Participants=" + simulationParticipants +
             ", created=" + created +
             '}';
     }

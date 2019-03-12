@@ -64,7 +64,7 @@ public class SimulationParticipant {
 
     @Override
     public String toString() {
-        return "Simulation Participant{" +
+        return "SimulationInput Participant{" +
             "horseId=" + horseId +
             ", jockeyId='" + jockeyId + '\'' +
             ", luck factor=" + luckFactor +

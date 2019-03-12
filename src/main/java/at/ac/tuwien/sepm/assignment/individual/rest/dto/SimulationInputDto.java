@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
-public class SimulationDto {
+public class SimulationInputDto {
 
         private String name;
         private List<SimulationParticipant> simulationParticipants;
@@ -14,11 +14,11 @@ public class SimulationDto {
 
 
 
-        public SimulationDto(){}
+        public SimulationInputDto(){}
 
 
 
-        public SimulationDto(String name,List<SimulationParticipant> simulationParticipants,LocalDateTime created){
+        public SimulationInputDto(String name, List<SimulationParticipant> simulationParticipants, LocalDateTime created){
 
             this.name = name;
             this.created = created;
@@ -56,11 +56,11 @@ public class SimulationDto {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof SimulationDto)) return false;
-        SimulationDto simulationDto = (SimulationDto) o;
-        return Objects.equals(name, simulationDto.name) &&
-            Objects.equals(simulationParticipants, simulationDto.simulationParticipants) &&
-            Objects.equals(created, simulationDto.created);
+        if (!(o instanceof SimulationInputDto)) return false;
+        SimulationInputDto simulationInputDto = (SimulationInputDto) o;
+        return Objects.equals(name, simulationInputDto.name) &&
+            Objects.equals(simulationParticipants, simulationInputDto.simulationParticipants) &&
+            Objects.equals(created, simulationInputDto.created);
     }
 
     @Override
@@ -71,9 +71,9 @@ public class SimulationDto {
 
     @Override
     public String toString() {
-        return "SimulationDto{" +
+        return "SimulationInputDto{" +
             ", name='" + name + '\'' +
-            ", Simulation Participants=" + simulationParticipants +
+            ", SimulationInput Participants=" + simulationParticipants +
             ", created=" + created +
             '}';
     }
