@@ -47,9 +47,9 @@ public class JockeyService implements IJockeyService {
             throw new IllegalArgumentException("Skill field is missing!");
         }
 
-        if (jockey.getSkill() < Double.MIN_VALUE) {
-            LOGGER.info("Minimum value boundary exceeded.Setting the Skill to " + Double.MIN_VALUE);
-            jockey.setSkill(Double.MIN_VALUE);
+        if (jockey.getSkill() < -Double.MAX_VALUE) {
+            LOGGER.info("Minimum value boundary exceeded.Setting the Skill to " + -Double.MAX_VALUE);
+            jockey.setSkill(-Double.MAX_VALUE);
         }
         if (jockey.getSkill() > Double.MAX_VALUE) {
             LOGGER.info("Maximum value boundary exceeded.Setting the Skill to " + Double.MAX_VALUE);
@@ -87,9 +87,9 @@ public class JockeyService implements IJockeyService {
                 }
                 jockey.setCreated(jockeyOld.getCreated());
 
-                if (jockey.getSkill() < Double.MIN_VALUE) {
-                    LOGGER.info("Minimum value boundary exceeded.Setting the Skill to " + Double.MIN_VALUE);
-                    jockey.setSkill(Double.MIN_VALUE);
+                if (jockey.getSkill() < -Double.MAX_VALUE) {
+                    LOGGER.info("Minimum value boundary exceeded.Setting the Skill to " + -Double.MAX_VALUE);
+                    jockey.setSkill(-Double.MAX_VALUE);
                 }
                 if (jockey.getSkill() > Double.MAX_VALUE) {
                     LOGGER.info("Maximum value boundary exceeded.Setting the Skill to " + Double.MAX_VALUE);
@@ -136,7 +136,7 @@ public class JockeyService implements IJockeyService {
         public List<Jockey> getAllJockeysFiltered(Jockey jockey) throws ServiceException, NotFoundException{
             LOGGER.info("Get all jockeys with filter: " + jockey.toString());
             if(jockey.getSkill() == null){
-                jockey.setSkill(Double.MIN_VALUE);
+                jockey.setSkill(-Double.MAX_VALUE);
             }
             if(jockey.getName() == null){
                 jockey.setName("");
