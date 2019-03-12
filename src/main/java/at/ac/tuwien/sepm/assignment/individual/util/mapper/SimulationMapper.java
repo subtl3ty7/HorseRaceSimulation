@@ -2,9 +2,12 @@ package at.ac.tuwien.sepm.assignment.individual.util.mapper;
 
 import at.ac.tuwien.sepm.assignment.individual.entity.Simulation;
 import at.ac.tuwien.sepm.assignment.individual.rest.dto.SimulationDto;
+import org.springframework.stereotype.Component;
+
 import java.util.LinkedList;
 import java.util.List;
 
+@Component
 public class SimulationMapper {
 
     /**
