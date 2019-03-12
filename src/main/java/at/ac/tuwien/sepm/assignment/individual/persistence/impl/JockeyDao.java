@@ -16,6 +16,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
+
+@Repository
 public class JockeyDao implements IJockeyDao{
     private static final Logger LOGGER = LoggerFactory.getLogger(JockeyDao.class);
     private final DBConnectionManager dbConnectionManager;
