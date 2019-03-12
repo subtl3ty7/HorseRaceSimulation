@@ -1,9 +1,7 @@
 -- create table horse if not exists
-DROP TABLE horse;
-DROP TABLE jockey;
-
-
-CREATE TABLE IF NOT EXISTS horse (
+DROP TABLE IF EXISTS horse;
+DROP TABLE IF EXISTS jockey;
+CREATE TABLE IF NOT EXISTS horse(
   -- use auto incrementing IDs as primary key
   id        BIGINT AUTO_INCREMENT PRIMARY KEY,
   name      VARCHAR(255) NOT NULL,
