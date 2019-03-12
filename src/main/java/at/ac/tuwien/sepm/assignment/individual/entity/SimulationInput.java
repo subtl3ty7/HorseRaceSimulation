@@ -69,7 +69,7 @@ public class SimulationInput {
     @Override
     public String toString() {
         return "SimulationInput{" +
-            ", name='" + name + '\'' +
+            "name='" + name + '\'' +
             ", SimulationInput Participants=" + simulationParticipants +
             ", created=" + created +
             '}';
