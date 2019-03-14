@@ -1,0 +1,814 @@
+2019-03-13 22:55:53,783 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:50] Starting SimulationIntegrationTest on DESKTOP-J013F5H with PID 6412 (started by egede in C:\Users\egede\OneDrive\Masaüstü\UNI\SEPM\Individual Assignment\sepm-individual-assignment-java-template)
+2019-03-13 22:55:53,788 DEBUG [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:53] Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2019-03-13 22:55:53,789 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [SpringApplication.java:679] The following profiles are active: test
+2019-03-13 22:55:56,179 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:59] Started SimulationIntegrationTest in 2.756 seconds (JVM running for 4.121)
+2019-03-13 22:55:56,751 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 22:55:56,776 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T22:55:56.756358500, updated=2019-03-13T22:55:56.757355600}
+2019-03-13 22:55:56,777 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse1', breed='Not Specified', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T22:55:56.756358500, updated=2019-03-13T22:55:56.757355600}
+2019-03-13 22:55:56,777 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:55:56,778 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:54] Establish database connection
+2019-03-13 22:55:56,944 ERROR [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:68] Problem while establishing the database connection
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "
+
+
+CREATE TABLE IF NOT EXISTS SIMULATION (
+
+  NAME        VARCHAR(255) NOT NULL,
+  CREATED     DATETIME     NOT NULL,
+  HORSENAME   VARCHAR(255) NOT NULL,
+  JOCKEYNAME  VARCHAR(255  NOT[*] NULL,
+  AVGSPEED    DOUBLE       NOT NULL,
+  HORSESPEED  DOUBLE       NOT NULL,
+  SKILL       DOUBLE       NOT NULL,
+  LUCKFACTOR  DOUBLE       NOT NULL,
+  RANK        BIGINT       NOT NULL
+
+) "; expected "K, M, G, CHAR, BYTE, )"; SQL statement:
+
+
+
+CREATE TABLE IF NOT EXISTS simulation (
+
+  name        VARCHAR(255) NOT NULL,
+  created     DATETIME     NOT NULL,
+  horseName   VARCHAR(255) NOT NULL,
+  jockeyName  VARCHAR(255  NOT NULL,
+  avgSpeed    DOUBLE       NOT NULL,
+  horseSpeed  DOUBLE       NOT NULL,
+  skill       DOUBLE       NOT NULL,
+  luckFactor  DOUBLE       NOT NULL,
+  rank        BIGINT       NOT NULL
+
+) [42001-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:217)
+	at org.h2.command.Parser.getSyntaxError(Parser.java:555)
+	at org.h2.command.Parser.read(Parser.java:3518)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:4474)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:4215)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:6662)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:6570)
+	at org.h2.command.Parser.parseCreate(Parser.java:4615)
+	at org.h2.command.Parser.parsePrepared(Parser.java:380)
+	at org.h2.command.Parser.parse(Parser.java:335)
+	at org.h2.command.Parser.parse(Parser.java:311)
+	at org.h2.command.Parser.prepare(Parser.java:262)
+	at org.h2.engine.Session.prepare(Session.java:576)
+	at org.h2.engine.Session.prepare(Session.java:560)
+	at org.h2.command.dml.RunScriptCommand.execute(RunScriptCommand.java:75)
+	at org.h2.command.dml.RunScriptCommand.update(RunScriptCommand.java:58)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:102)
+	at org.h2.command.Command.executeUpdate(Command.java:261)
+	at org.h2.engine.Engine.openSession(Engine.java:227)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:157)
+	at org.h2.engine.Engine.createSession(Engine.java:140)
+	at org.h2.engine.Engine.createSession(Engine.java:28)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:351)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at at.ac.tuwien.sepm.assignment.individual.persistence.util.DBConnectionManager.establishConnection(DBConnectionManager.java:62)
+	at at.ac.tuwien.sepm.assignment.individual.persistence.util.DBConnectionManager.getConnection(DBConnectionManager.java:33)
+	at at.ac.tuwien.sepm.assignment.individual.persistence.impl.HorseDao.insertHorseToDB(HorseDao.java:78)
+	at at.ac.tuwien.sepm.assignment.individual.service.impl.HorseService.insertHorseToDB(HorseService.java:73)
+	at at.ac.tuwien.sepm.assignment.individual.rest.HorseEndpoint.insertHorseToDatabase(HorseEndpoint.java:72)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2019-03-13 22:55:56,945 ERROR [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:77] Database Error occurred during insertion!
+2019-03-13 22:55:56,946 ERROR [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:76] Error during insertion of horse data
+2019-03-13 22:55:56,986 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 22:55:57,007 INFO [Thread-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 22:56:57,361 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:50] Starting SimulationIntegrationTest on DESKTOP-J013F5H with PID 3232 (started by egede in C:\Users\egede\OneDrive\Masaüstü\UNI\SEPM\Individual Assignment\sepm-individual-assignment-java-template)
+2019-03-13 22:56:57,364 DEBUG [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:53] Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2019-03-13 22:56:57,364 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [SpringApplication.java:679] The following profiles are active: test
+2019-03-13 22:56:59,212 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:59] Started SimulationIntegrationTest in 2.141 seconds (JVM running for 3.37)
+2019-03-13 22:56:59,639 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 22:56:59,660 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T22:56:59.643952900, updated=2019-03-13T22:56:59.644949900}
+2019-03-13 22:56:59,660 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse1', breed='Not Specified', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T22:56:59.643952900, updated=2019-03-13T22:56:59.644949900}
+2019-03-13 22:56:59,661 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,661 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:54] Establish database connection
+2019-03-13 22:56:59,811 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,823 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 1 is successfully inserted.
+2019-03-13 22:56:59,824 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 22:56:59,824 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 22:56:59,855 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 22:56:59,855 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T22:56:59.855387700, updated=2019-03-13T22:56:59.855387700}
+2019-03-13 22:56:59,856 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse2', breed='Not Specified', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T22:56:59.855387700, updated=2019-03-13T22:56:59.855387700}
+2019-03-13 22:56:59,856 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,857 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,858 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 2 is successfully inserted.
+2019-03-13 22:56:59,859 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 22:56:59,859 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 22:56:59,865 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 22:56:59,865 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T22:56:59.865360900, updated=2019-03-13T22:56:59.865360900}
+2019-03-13 22:56:59,865 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse3', breed='Not Specified', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T22:56:59.865360900, updated=2019-03-13T22:56:59.865360900}
+2019-03-13 22:56:59,866 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,866 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,867 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 3 is successfully inserted.
+2019-03-13 22:56:59,868 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 22:56:59,869 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 22:56:59,878 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 22:56:59,886 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T22:56:59.878326800, updated=2019-03-13T22:56:59.878326800}
+2019-03-13 22:56:59,887 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T22:56:59.878326800, updated=2019-03-13T22:56:59.878326800}
+2019-03-13 22:56:59,888 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,889 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,890 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 1 is successfully inserted.
+2019-03-13 22:56:59,890 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 22:56:59,891 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 22:56:59,897 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 22:56:59,898 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T22:56:59.898273100, updated=2019-03-13T22:56:59.898273100}
+2019-03-13 22:56:59,898 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T22:56:59.898273100, updated=2019-03-13T22:56:59.898273100}
+2019-03-13 22:56:59,898 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,899 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,900 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 2 is successfully inserted.
+2019-03-13 22:56:59,901 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 22:56:59,901 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 22:56:59,906 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 22:56:59,907 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T22:56:59.907249100, updated=2019-03-13T22:56:59.907249100}
+2019-03-13 22:56:59,907 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T22:56:59.907249100, updated=2019-03-13T22:56:59.907249100}
+2019-03-13 22:56:59,907 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,908 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,909 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 3 is successfully inserted.
+2019-03-13 22:56:59,909 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 22:56:59,909 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 22:56:59,925 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.r.JockeyEndpoint [SimulationEndpoint.java:57] POST/api/v1/simulations
+2019-03-13 22:56:59,930 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.s.i.SimulationService [SimulationService.java:99] Insert simulation: SimulationInput{name='Simulation1', SimulationInput Participants=[SimulationInput Participant{horseId=1, jockeyId='1', luck factor=1.0}, SimulationInput Participant{horseId=2, jockeyId='2', luck factor=0.95}, SimulationInput Participant{horseId=3, jockeyId='3', luck factor=1.05}], created=2019-03-13T22:56:59.925200600}
+2019-03-13 22:56:59,932 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 1
+2019-03-13 22:56:59,932 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,935 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 1
+2019-03-13 22:56:59,935 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,936 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 1
+2019-03-13 22:56:59,936 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,937 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 1
+2019-03-13 22:56:59,937 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,938 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 1
+2019-03-13 22:56:59,938 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,939 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 1
+2019-03-13 22:56:59,940 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,940 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 1
+2019-03-13 22:56:59,940 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,941 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 2
+2019-03-13 22:56:59,941 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,942 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 2
+2019-03-13 22:56:59,942 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,943 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 2
+2019-03-13 22:56:59,943 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,944 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 2
+2019-03-13 22:56:59,944 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,944 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 2
+2019-03-13 22:56:59,945 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,945 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 2
+2019-03-13 22:56:59,946 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,946 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 2
+2019-03-13 22:56:59,947 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,947 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 3
+2019-03-13 22:56:59,948 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,948 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 3
+2019-03-13 22:56:59,949 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,949 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 3
+2019-03-13 22:56:59,950 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,950 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 3
+2019-03-13 22:56:59,950 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,951 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 3
+2019-03-13 22:56:59,951 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,952 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 3
+2019-03-13 22:56:59,952 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,953 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 3
+2019-03-13 22:56:59,954 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 22:56:59,978 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 22:56:59,989 INFO [Thread-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:01:30,245 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:50] Starting SimulationIntegrationTest on DESKTOP-J013F5H with PID 1208 (started by egede in C:\Users\egede\OneDrive\Masaüstü\UNI\SEPM\Individual Assignment\sepm-individual-assignment-java-template)
+2019-03-13 23:01:30,248 DEBUG [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:53] Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2019-03-13 23:01:30,248 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [SpringApplication.java:679] The following profiles are active: test
+2019-03-13 23:01:32,084 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:59] Started SimulationIntegrationTest in 2.115 seconds (JVM running for 3.193)
+2019-03-13 23:01:32,543 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:01:32,564 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:01:32.548531900, updated=2019-03-13T23:01:32.549529200}
+2019-03-13 23:01:32,565 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse1', breed='Not Specified', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:01:32.548531900, updated=2019-03-13T23:01:32.549529200}
+2019-03-13 23:01:32,565 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,566 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:54] Establish database connection
+2019-03-13 23:01:32,723 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,734 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 1 is successfully inserted.
+2019-03-13 23:01:32,735 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:01:32,735 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:01:32,761 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:01:32,761 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:01:32.761961300, updated=2019-03-13T23:01:32.761961300}
+2019-03-13 23:01:32,762 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse2', breed='Not Specified', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:01:32.761961300, updated=2019-03-13T23:01:32.761961300}
+2019-03-13 23:01:32,762 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,763 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,764 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 2 is successfully inserted.
+2019-03-13 23:01:32,765 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:01:32,765 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:01:32,771 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:01:32,772 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:01:32.772932200, updated=2019-03-13T23:01:32.772932200}
+2019-03-13 23:01:32,772 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse3', breed='Not Specified', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:01:32.772932200, updated=2019-03-13T23:01:32.772932200}
+2019-03-13 23:01:32,773 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,773 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,774 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 3 is successfully inserted.
+2019-03-13 23:01:32,774 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:01:32,774 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:01:32,784 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:01:32,794 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:01:32.784900, updated=2019-03-13T23:01:32.784900}
+2019-03-13 23:01:32,795 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:01:32.784900, updated=2019-03-13T23:01:32.784900}
+2019-03-13 23:01:32,795 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,796 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,797 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 1 is successfully inserted.
+2019-03-13 23:01:32,797 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:01:32,798 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:01:32,806 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:01:32,806 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:01:32.806842500, updated=2019-03-13T23:01:32.806842500}
+2019-03-13 23:01:32,807 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:01:32.806842500, updated=2019-03-13T23:01:32.806842500}
+2019-03-13 23:01:32,807 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,808 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,808 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 2 is successfully inserted.
+2019-03-13 23:01:32,809 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:01:32,809 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:01:32,814 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:01:32,815 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:01:32.815817600, updated=2019-03-13T23:01:32.815817600}
+2019-03-13 23:01:32,826 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:01:32.815817600, updated=2019-03-13T23:01:32.815817600}
+2019-03-13 23:01:32,826 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,827 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,828 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 3 is successfully inserted.
+2019-03-13 23:01:32,828 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:01:32,828 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:01:32,845 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.r.JockeyEndpoint [SimulationEndpoint.java:57] POST/api/v1/simulations
+2019-03-13 23:01:32,850 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.s.i.SimulationService [SimulationService.java:98] Insert simulation: SimulationInput{name='Simulation1', SimulationInput Participants=[SimulationInput Participant{horseId=1, jockeyId='1', luck factor=1.0}, SimulationInput Participant{horseId=2, jockeyId='2', luck factor=0.95}, SimulationInput Participant{horseId=3, jockeyId='3', luck factor=1.05}], created=2019-03-13T23:01:32.845737800}
+2019-03-13 23:01:32,851 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 1
+2019-03-13 23:01:32,851 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,854 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 1
+2019-03-13 23:01:32,855 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,856 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 2
+2019-03-13 23:01:32,857 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,858 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 2
+2019-03-13 23:01:32,858 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,859 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 3
+2019-03-13 23:01:32,859 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,860 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 3
+2019-03-13 23:01:32,860 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:01:32,882 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:01:32,892 INFO [Thread-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:03:26,402 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:50] Starting SimulationIntegrationTest on DESKTOP-J013F5H with PID 17536 (started by egede in C:\Users\egede\OneDrive\Masaüstü\UNI\SEPM\Individual Assignment\sepm-individual-assignment-java-template)
+2019-03-13 23:03:26,406 DEBUG [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:53] Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2019-03-13 23:03:26,407 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [SpringApplication.java:679] The following profiles are active: test
+2019-03-13 23:03:28,276 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:59] Started SimulationIntegrationTest in 2.169 seconds (JVM running for 3.254)
+2019-03-13 23:03:28,712 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:03:28,734 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:03:28.717906300, updated=2019-03-13T23:03:28.718903800}
+2019-03-13 23:03:28,735 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse1', breed='Not Specified', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:03:28.717906300, updated=2019-03-13T23:03:28.718903800}
+2019-03-13 23:03:28,736 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:28,736 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:54] Establish database connection
+2019-03-13 23:03:28,903 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:28,913 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 1 is successfully inserted.
+2019-03-13 23:03:28,914 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:03:28,915 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:03:28,942 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:03:28,943 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:03:28.943303900, updated=2019-03-13T23:03:28.943303900}
+2019-03-13 23:03:28,943 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse2', breed='Not Specified', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:03:28.943303900, updated=2019-03-13T23:03:28.943303900}
+2019-03-13 23:03:28,944 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:28,945 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:28,947 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 2 is successfully inserted.
+2019-03-13 23:03:28,947 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:03:28,947 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:03:28,954 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:03:28,954 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:03:28.954274800, updated=2019-03-13T23:03:28.954274800}
+2019-03-13 23:03:28,955 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse3', breed='Not Specified', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:03:28.954274800, updated=2019-03-13T23:03:28.954274800}
+2019-03-13 23:03:28,955 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:28,956 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:28,957 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 3 is successfully inserted.
+2019-03-13 23:03:28,958 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:03:28,958 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:03:28,967 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:03:28,978 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:03:28.968237500, updated=2019-03-13T23:03:28.968237500}
+2019-03-13 23:03:28,979 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:03:28.968237500, updated=2019-03-13T23:03:28.968237500}
+2019-03-13 23:03:28,980 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:28,981 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:28,982 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 1 is successfully inserted.
+2019-03-13 23:03:28,983 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:03:28,983 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:03:28,990 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:03:28,991 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:03:28.991176100, updated=2019-03-13T23:03:28.991176100}
+2019-03-13 23:03:28,991 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:03:28.991176100, updated=2019-03-13T23:03:28.991176100}
+2019-03-13 23:03:28,992 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:28,993 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:28,994 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 2 is successfully inserted.
+2019-03-13 23:03:28,994 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:03:28,995 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:03:29,000 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:03:29,001 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:03:29.001149700, updated=2019-03-13T23:03:29.001149700}
+2019-03-13 23:03:29,001 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:03:29.001149700, updated=2019-03-13T23:03:29.001149700}
+2019-03-13 23:03:29,001 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:29,002 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:29,003 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 3 is successfully inserted.
+2019-03-13 23:03:29,003 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:03:29,003 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:03:29,019 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.r.JockeyEndpoint [SimulationEndpoint.java:57] POST/api/v1/simulations
+2019-03-13 23:03:29,025 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.s.i.SimulationService [SimulationService.java:102] Insert simulation: SimulationInput{name='Simulation1', SimulationInput Participants=[SimulationInput Participant{horseId=1, jockeyId='1', luck factor=1.0}, SimulationInput Participant{horseId=2, jockeyId='2', luck factor=0.95}, SimulationInput Participant{horseId=3, jockeyId='3', luck factor=1.05}], created=2019-03-13T23:03:29.019101}
+2019-03-13 23:03:29,025 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 1
+2019-03-13 23:03:29,026 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:29,028 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 1
+2019-03-13 23:03:29,028 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:29,030 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 2
+2019-03-13 23:03:29,030 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:29,031 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 2
+2019-03-13 23:03:29,031 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:29,032 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 3
+2019-03-13 23:03:29,032 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:29,033 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 3
+2019-03-13 23:03:29,033 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:29,057 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:03:29,069 INFO [Thread-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:03:54,632 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:50] Starting SimulationIntegrationTest on DESKTOP-J013F5H with PID 18076 (started by egede in C:\Users\egede\OneDrive\Masaüstü\UNI\SEPM\Individual Assignment\sepm-individual-assignment-java-template)
+2019-03-13 23:03:54,634 DEBUG [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:53] Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2019-03-13 23:03:54,634 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [SpringApplication.java:679] The following profiles are active: test
+2019-03-13 23:03:56,568 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:59] Started SimulationIntegrationTest in 2.26 seconds (JVM running for 3.359)
+2019-03-13 23:03:57,014 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:03:57,034 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:03:57.018618800, updated=2019-03-13T23:03:57.019616700}
+2019-03-13 23:03:57,035 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse1', breed='Not Specified', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:03:57.018618800, updated=2019-03-13T23:03:57.019616700}
+2019-03-13 23:03:57,035 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,035 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:54] Establish database connection
+2019-03-13 23:03:57,195 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,206 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 1 is successfully inserted.
+2019-03-13 23:03:57,206 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:03:57,207 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:03:57,233 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:03:57,233 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:03:57.233045700, updated=2019-03-13T23:03:57.233045700}
+2019-03-13 23:03:57,233 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse2', breed='Not Specified', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:03:57.233045700, updated=2019-03-13T23:03:57.233045700}
+2019-03-13 23:03:57,234 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,235 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,236 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 2 is successfully inserted.
+2019-03-13 23:03:57,236 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:03:57,237 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:03:57,243 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:03:57,244 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:03:57.244016100, updated=2019-03-13T23:03:57.244016100}
+2019-03-13 23:03:57,244 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse3', breed='Not Specified', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:03:57.244016100, updated=2019-03-13T23:03:57.244016100}
+2019-03-13 23:03:57,245 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,245 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,246 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 3 is successfully inserted.
+2019-03-13 23:03:57,246 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:03:57,246 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:03:57,254 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:03:57,264 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:03:57.254987700, updated=2019-03-13T23:03:57.254987700}
+2019-03-13 23:03:57,265 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:03:57.254987700, updated=2019-03-13T23:03:57.254987700}
+2019-03-13 23:03:57,265 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,266 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,268 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 1 is successfully inserted.
+2019-03-13 23:03:57,268 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:03:57,268 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:03:57,275 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:03:57,276 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:03:57.275931100, updated=2019-03-13T23:03:57.275931100}
+2019-03-13 23:03:57,276 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:03:57.275931100, updated=2019-03-13T23:03:57.275931100}
+2019-03-13 23:03:57,276 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,277 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,278 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 2 is successfully inserted.
+2019-03-13 23:03:57,278 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:03:57,278 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:03:57,282 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:03:57,283 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:03:57.283909300, updated=2019-03-13T23:03:57.283909300}
+2019-03-13 23:03:57,283 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:03:57.283909300, updated=2019-03-13T23:03:57.283909300}
+2019-03-13 23:03:57,284 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,284 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,285 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 3 is successfully inserted.
+2019-03-13 23:03:57,285 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:03:57,285 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:03:57,302 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.r.JockeyEndpoint [SimulationEndpoint.java:57] POST/api/v1/simulations
+2019-03-13 23:03:57,309 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.s.i.SimulationService [SimulationService.java:99] Insert simulation: SimulationInput{name='Simulation1', SimulationInput Participants=[SimulationInput Participant{horseId=1, jockeyId='1', luck factor=1.0}, SimulationInput Participant{horseId=2, jockeyId='2', luck factor=0.95}, SimulationInput Participant{horseId=3, jockeyId='3', luck factor=1.05}], created=2019-03-13T23:03:57.303856300}
+2019-03-13 23:03:57,310 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 1
+2019-03-13 23:03:57,311 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,313 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 1
+2019-03-13 23:03:57,313 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,315 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 2
+2019-03-13 23:03:57,315 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,316 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 2
+2019-03-13 23:03:57,317 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,317 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 3
+2019-03-13 23:03:57,318 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,318 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 3
+2019-03-13 23:03:57,319 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:03:57,341 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:03:57,353 INFO [Thread-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:07:59,268 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:50] Starting SimulationIntegrationTest on DESKTOP-J013F5H with PID 17576 (started by egede in C:\Users\egede\OneDrive\Masaüstü\UNI\SEPM\Individual Assignment\sepm-individual-assignment-java-template)
+2019-03-13 23:07:59,272 DEBUG [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:53] Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2019-03-13 23:07:59,272 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [SpringApplication.java:679] The following profiles are active: test
+2019-03-13 23:08:01,184 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:59] Started SimulationIntegrationTest in 2.208 seconds (JVM running for 3.402)
+2019-03-13 23:08:01,631 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:08:01,652 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:08:01.637090500, updated=2019-03-13T23:08:01.637090500}
+2019-03-13 23:08:01,652 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse1', breed='Not Specified', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:08:01.637090500, updated=2019-03-13T23:08:01.637090500}
+2019-03-13 23:08:01,653 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,653 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:54] Establish database connection
+2019-03-13 23:08:01,809 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,821 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 1 is successfully inserted.
+2019-03-13 23:08:01,822 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:08:01,822 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:08:01,847 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:08:01,848 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:08:01.848526200, updated=2019-03-13T23:08:01.848526200}
+2019-03-13 23:08:01,849 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse2', breed='Not Specified', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:08:01.848526200, updated=2019-03-13T23:08:01.848526200}
+2019-03-13 23:08:01,849 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,851 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,852 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 2 is successfully inserted.
+2019-03-13 23:08:01,852 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:08:01,853 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:08:01,860 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:08:01,860 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:08:01.860494100, updated=2019-03-13T23:08:01.860494100}
+2019-03-13 23:08:01,860 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse3', breed='Not Specified', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:08:01.860494100, updated=2019-03-13T23:08:01.860494100}
+2019-03-13 23:08:01,861 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,861 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,862 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 3 is successfully inserted.
+2019-03-13 23:08:01,862 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:08:01,863 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:08:01,872 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:08:01,882 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:08:01.872461500, updated=2019-03-13T23:08:01.872461500}
+2019-03-13 23:08:01,883 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:08:01.872461500, updated=2019-03-13T23:08:01.872461500}
+2019-03-13 23:08:01,883 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,884 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,885 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 1 is successfully inserted.
+2019-03-13 23:08:01,886 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:08:01,886 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:08:01,893 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:08:01,893 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:08:01.893405300, updated=2019-03-13T23:08:01.893405300}
+2019-03-13 23:08:01,894 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:08:01.893405300, updated=2019-03-13T23:08:01.893405300}
+2019-03-13 23:08:01,894 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,895 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,895 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 2 is successfully inserted.
+2019-03-13 23:08:01,896 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:08:01,896 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:08:01,901 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:08:01,902 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:08:01.901384600, updated=2019-03-13T23:08:01.901384600}
+2019-03-13 23:08:01,902 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:08:01.901384600, updated=2019-03-13T23:08:01.901384600}
+2019-03-13 23:08:01,902 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,902 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,903 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 3 is successfully inserted.
+2019-03-13 23:08:01,903 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:08:01,903 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:08:01,920 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.r.JockeyEndpoint [SimulationEndpoint.java:57] POST/api/v1/simulations
+2019-03-13 23:08:01,925 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.s.i.SimulationService [SimulationService.java:100] Insert simulation: SimulationInput{name='Simulation1', SimulationInput Participants=[SimulationInput Participant{horseId=1, jockeyId='1', luck factor=1.0}, SimulationInput Participant{horseId=2, jockeyId='2', luck factor=0.95}, SimulationInput Participant{horseId=3, jockeyId='3', luck factor=1.05}], created=2019-03-13T23:08:01.920333}
+2019-03-13 23:08:01,926 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 1
+2019-03-13 23:08:01,926 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,928 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 1
+2019-03-13 23:08:01,928 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,930 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 2
+2019-03-13 23:08:01,930 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,931 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 2
+2019-03-13 23:08:01,931 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,932 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 3
+2019-03-13 23:08:01,932 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,933 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 3
+2019-03-13 23:08:01,933 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,934 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,935 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,936 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:08:01,936 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.s.i.SimulationService [SimulationService.java:117] Simulation insertion validated.
+2019-03-13 23:08:01,937 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.r.JockeyEndpoint [SimulationEndpoint.java:61] Simulation insertion has been finished.
+2019-03-13 23:08:01,944 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:08:01,958 INFO [Thread-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:35:05,358 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:50] Starting SimulationIntegrationTest on DESKTOP-J013F5H with PID 4680 (started by egede in C:\Users\egede\OneDrive\Masaüstü\UNI\SEPM\Individual Assignment\sepm-individual-assignment-java-template)
+2019-03-13 23:35:05,361 DEBUG [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:53] Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2019-03-13 23:35:05,362 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [SpringApplication.java:679] The following profiles are active: test
+2019-03-13 23:35:07,193 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:59] Started SimulationIntegrationTest in 2.134 seconds (JVM running for 3.213)
+2019-03-13 23:35:07,653 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:35:07,678 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:35:07.658269, updated=2019-03-13T23:35:07.659266800}
+2019-03-13 23:35:07,679 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse1', breed='Not Specified', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:35:07.658269, updated=2019-03-13T23:35:07.659266800}
+2019-03-13 23:35:07,679 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,680 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:54] Establish database connection
+2019-03-13 23:35:07,825 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,835 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 1 is successfully inserted.
+2019-03-13 23:35:07,835 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:35:07,835 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:35:07,858 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:35:07,858 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:35:07.858733600, updated=2019-03-13T23:35:07.858733600}
+2019-03-13 23:35:07,858 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse2', breed='Not Specified', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:35:07.858733600, updated=2019-03-13T23:35:07.858733600}
+2019-03-13 23:35:07,859 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,860 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,861 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 2 is successfully inserted.
+2019-03-13 23:35:07,861 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:35:07,862 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:35:07,867 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:35:07,868 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:35:07.868706200, updated=2019-03-13T23:35:07.868706200}
+2019-03-13 23:35:07,868 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse3', breed='Not Specified', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:35:07.868706200, updated=2019-03-13T23:35:07.868706200}
+2019-03-13 23:35:07,869 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,869 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,870 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 3 is successfully inserted.
+2019-03-13 23:35:07,870 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:35:07,871 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:35:07,878 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:35:07,889 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:35:07.879676600, updated=2019-03-13T23:35:07.879676600}
+2019-03-13 23:35:07,889 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:35:07.879676600, updated=2019-03-13T23:35:07.879676600}
+2019-03-13 23:35:07,890 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,891 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,892 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 1 is successfully inserted.
+2019-03-13 23:35:07,893 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:35:07,893 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:35:07,900 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:35:07,901 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:35:07.901617700, updated=2019-03-13T23:35:07.901617700}
+2019-03-13 23:35:07,902 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:35:07.901617700, updated=2019-03-13T23:35:07.901617700}
+2019-03-13 23:35:07,902 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,903 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,904 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 2 is successfully inserted.
+2019-03-13 23:35:07,904 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:35:07,904 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:35:07,910 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:35:07,911 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:35:07.911590800, updated=2019-03-13T23:35:07.911590800}
+2019-03-13 23:35:07,911 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:35:07.911590800, updated=2019-03-13T23:35:07.911590800}
+2019-03-13 23:35:07,911 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,912 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,913 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 3 is successfully inserted.
+2019-03-13 23:35:07,913 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:35:07,913 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:35:07,929 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.r.JockeyEndpoint [SimulationEndpoint.java:57] POST/api/v1/simulations
+2019-03-13 23:35:07,935 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.s.i.SimulationService [SimulationService.java:100] Insert simulation: SimulationInput{name='Simulation1', SimulationInput Participants=[SimulationInput Participant{horseId=1, jockeyId='1', luck factor=1.0}, SimulationInput Participant{horseId=2, jockeyId='2', luck factor=0.95}, SimulationInput Participant{horseId=3, jockeyId='3', luck factor=1.05}], created=2019-03-13T23:35:07.930541400}
+2019-03-13 23:35:07,936 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 1
+2019-03-13 23:35:07,936 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,938 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 1
+2019-03-13 23:35:07,938 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,940 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 2
+2019-03-13 23:35:07,941 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,941 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 2
+2019-03-13 23:35:07,942 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,943 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 3
+2019-03-13 23:35:07,943 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,944 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 3
+2019-03-13 23:35:07,944 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,945 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,947 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,948 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,948 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:35:07,949 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.s.i.SimulationService [SimulationService.java:117] Simulation insertion validated.
+2019-03-13 23:35:07,949 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.r.JockeyEndpoint [SimulationEndpoint.java:61] Simulation insertion has been finished.
+2019-03-13 23:35:07,955 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:35:07,967 INFO [Thread-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:38:58,899 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:50] Starting SimulationIntegrationTest on DESKTOP-J013F5H with PID 6716 (started by egede in C:\Users\egede\OneDrive\Masaüstü\UNI\SEPM\Individual Assignment\sepm-individual-assignment-java-template)
+2019-03-13 23:38:58,902 DEBUG [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:53] Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2019-03-13 23:38:58,915 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [SpringApplication.java:679] The following profiles are active: test
+2019-03-13 23:39:00,834 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:59] Started SimulationIntegrationTest in 2.224 seconds (JVM running for 3.354)
+2019-03-13 23:39:01,300 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:39:01,321 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:39:01.304295800, updated=2019-03-13T23:39:01.305293100}
+2019-03-13 23:39:01,322 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse1', breed='Not Specified', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:39:01.304295800, updated=2019-03-13T23:39:01.305293100}
+2019-03-13 23:39:01,322 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,322 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:54] Establish database connection
+2019-03-13 23:39:01,471 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,481 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 1 is successfully inserted.
+2019-03-13 23:39:01,482 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:39:01,482 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:39:01,505 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:39:01,505 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:39:01.505758100, updated=2019-03-13T23:39:01.505758100}
+2019-03-13 23:39:01,505 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse2', breed='Not Specified', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:39:01.505758100, updated=2019-03-13T23:39:01.505758100}
+2019-03-13 23:39:01,506 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,507 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,508 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 2 is successfully inserted.
+2019-03-13 23:39:01,508 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:39:01,508 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:39:01,514 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:39:01,514 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:39:01.514733900, updated=2019-03-13T23:39:01.514733900}
+2019-03-13 23:39:01,515 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse3', breed='Not Specified', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:39:01.514733900, updated=2019-03-13T23:39:01.514733900}
+2019-03-13 23:39:01,515 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,516 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,516 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 3 is successfully inserted.
+2019-03-13 23:39:01,517 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:39:01,517 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:39:01,526 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:39:01,536 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:39:01.526702400, updated=2019-03-13T23:39:01.526702400}
+2019-03-13 23:39:01,537 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:39:01.526702400, updated=2019-03-13T23:39:01.526702400}
+2019-03-13 23:39:01,537 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,539 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,540 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 1 is successfully inserted.
+2019-03-13 23:39:01,540 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:39:01,540 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:39:01,547 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:39:01,548 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:39:01.548642900, updated=2019-03-13T23:39:01.548642900}
+2019-03-13 23:39:01,548 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:39:01.548642900, updated=2019-03-13T23:39:01.548642900}
+2019-03-13 23:39:01,548 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,549 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,550 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 2 is successfully inserted.
+2019-03-13 23:39:01,550 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:39:01,550 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:39:01,555 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:39:01,556 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:39:01.556622100, updated=2019-03-13T23:39:01.556622100}
+2019-03-13 23:39:01,556 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:39:01.556622100, updated=2019-03-13T23:39:01.556622100}
+2019-03-13 23:39:01,556 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,557 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,557 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 3 is successfully inserted.
+2019-03-13 23:39:01,557 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:39:01,558 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:39:01,572 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.r.JockeyEndpoint [SimulationEndpoint.java:57] POST/api/v1/simulations
+2019-03-13 23:39:01,578 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.s.i.SimulationService [SimulationService.java:100] Insert simulation: SimulationInput{name='Simulation1', SimulationInput Participants=[SimulationInput Participant{horseId=1, jockeyId='1', luck factor=1.0}, SimulationInput Participant{horseId=2, jockeyId='2', luck factor=0.95}, SimulationInput Participant{horseId=3, jockeyId='3', luck factor=1.05}], created=2019-03-13T23:39:01.573577300}
+2019-03-13 23:39:01,578 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 1
+2019-03-13 23:39:01,579 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,581 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 1
+2019-03-13 23:39:01,582 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,583 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 2
+2019-03-13 23:39:01,584 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,585 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 2
+2019-03-13 23:39:01,585 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,586 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 3
+2019-03-13 23:39:01,586 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,587 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 3
+2019-03-13 23:39:01,587 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,588 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,590 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,591 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,591 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:39:01,591 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.s.i.SimulationService [SimulationService.java:117] Simulation insertion validated.
+2019-03-13 23:39:01,592 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.r.JockeyEndpoint [SimulationEndpoint.java:61] Simulation insertion has been finished.
+2019-03-13 23:39:01,610 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:39:01,622 INFO [Thread-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:52:15,946 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:50] Starting SimulationIntegrationTest on DESKTOP-J013F5H with PID 7544 (started by egede in C:\Users\egede\OneDrive\Masaüstü\UNI\SEPM\Individual Assignment\sepm-individual-assignment-java-template)
+2019-03-13 23:52:15,949 DEBUG [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:53] Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2019-03-13 23:52:15,949 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [SpringApplication.java:679] The following profiles are active: test
+2019-03-13 23:52:17,826 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:59] Started SimulationIntegrationTest in 2.162 seconds (JVM running for 3.216)
+2019-03-13 23:52:18,288 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:52:18,307 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:52:18.292568200, updated=2019-03-13T23:52:18.293565500}
+2019-03-13 23:52:18,308 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse1', breed='Not Specified', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:52:18.292568200, updated=2019-03-13T23:52:18.293565500}
+2019-03-13 23:52:18,309 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,309 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:54] Establish database connection
+2019-03-13 23:52:18,474 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,486 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 1 is successfully inserted.
+2019-03-13 23:52:18,487 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:52:18,487 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:52:18,513 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:52:18,513 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:52:18.513976200, updated=2019-03-13T23:52:18.513976200}
+2019-03-13 23:52:18,514 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse2', breed='Not Specified', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:52:18.513976200, updated=2019-03-13T23:52:18.513976200}
+2019-03-13 23:52:18,514 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,515 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,516 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 2 is successfully inserted.
+2019-03-13 23:52:18,517 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:52:18,517 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:52:18,523 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:52:18,523 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:52:18.523950, updated=2019-03-13T23:52:18.523950}
+2019-03-13 23:52:18,524 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse3', breed='Not Specified', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:52:18.523950, updated=2019-03-13T23:52:18.523950}
+2019-03-13 23:52:18,524 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,524 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,525 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 3 is successfully inserted.
+2019-03-13 23:52:18,525 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:52:18,525 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:52:18,535 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:52:18,544 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:52:18.535917400, updated=2019-03-13T23:52:18.535917400}
+2019-03-13 23:52:18,545 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:52:18.535917400, updated=2019-03-13T23:52:18.535917400}
+2019-03-13 23:52:18,545 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,547 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,548 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 1 is successfully inserted.
+2019-03-13 23:52:18,548 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:52:18,548 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:52:18,554 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:52:18,554 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:52:18.554866600, updated=2019-03-13T23:52:18.554866600}
+2019-03-13 23:52:18,555 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:52:18.554866600, updated=2019-03-13T23:52:18.554866600}
+2019-03-13 23:52:18,555 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,556 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,557 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 2 is successfully inserted.
+2019-03-13 23:52:18,557 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:52:18,558 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:52:18,563 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:52:18,564 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:52:18.564839900, updated=2019-03-13T23:52:18.564839900}
+2019-03-13 23:52:18,564 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:52:18.564839900, updated=2019-03-13T23:52:18.564839900}
+2019-03-13 23:52:18,564 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,565 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,566 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 3 is successfully inserted.
+2019-03-13 23:52:18,566 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:52:18,566 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:52:18,587 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.r.JockeyEndpoint [SimulationEndpoint.java:57] POST/api/v1/simulations
+2019-03-13 23:52:18,593 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.s.i.SimulationService [SimulationService.java:104] Insert simulation: SimulationInput{name='Simulation1', SimulationInput Participants=[SimulationInput Participant{horseId=1, jockeyId='1', luck factor=1.0}, SimulationInput Participant{horseId=2, jockeyId='2', luck factor=0.95}, SimulationInput Participant{horseId=3, jockeyId='3', luck factor=1.05}], created=2019-03-13T23:52:18.587778400}
+2019-03-13 23:52:18,593 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 1
+2019-03-13 23:52:18,594 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,596 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 1
+2019-03-13 23:52:18,596 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,598 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 2
+2019-03-13 23:52:18,598 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,599 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 2
+2019-03-13 23:52:18,599 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,600 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 3
+2019-03-13 23:52:18,601 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,601 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 3
+2019-03-13 23:52:18,602 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,603 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,605 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,606 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,607 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:52:18,607 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.s.i.SimulationService [SimulationService.java:121] Simulation insertion validated.
+2019-03-13 23:52:18,608 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.r.JockeyEndpoint [SimulationEndpoint.java:61] Simulation insertion has been finished.
+2019-03-13 23:52:18,633 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:52:18,645 INFO [Thread-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:57:26,981 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:50] Starting SimulationIntegrationTest on DESKTOP-J013F5H with PID 10120 (started by egede in C:\Users\egede\OneDrive\Masaüstü\UNI\SEPM\Individual Assignment\sepm-individual-assignment-java-template)
+2019-03-13 23:57:26,983 DEBUG [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:53] Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2019-03-13 23:57:26,984 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [SpringApplication.java:679] The following profiles are active: test
+2019-03-13 23:57:28,819 INFO [main] a.a.t.s.a.i.i.SimulationIntegrationTest [StartupInfoLogger.java:59] Started SimulationIntegrationTest in 2.116 seconds (JVM running for 3.232)
+2019-03-13 23:57:29,288 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:57:29,310 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:57:29.292100, updated=2019-03-13T23:57:29.293096600}
+2019-03-13 23:57:29,311 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse1', breed='Not Specified', minSpeed=40.0, maxSpeed=60.0, created=2019-03-13T23:57:29.292100, updated=2019-03-13T23:57:29.293096600}
+2019-03-13 23:57:29,311 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,312 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:54] Establish database connection
+2019-03-13 23:57:29,481 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,493 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 1 is successfully inserted.
+2019-03-13 23:57:29,493 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:57:29,494 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:57:29,520 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:57:29,520 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:57:29.520488300, updated=2019-03-13T23:57:29.520488300}
+2019-03-13 23:57:29,520 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse2', breed='Not Specified', minSpeed=49.99, maxSpeed=50.0, created=2019-03-13T23:57:29.520488300, updated=2019-03-13T23:57:29.520488300}
+2019-03-13 23:57:29,521 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,522 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,523 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 2 is successfully inserted.
+2019-03-13 23:57:29,523 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:57:29,524 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:57:29,529 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-13 23:57:29,530 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:57:29.529463900, updated=2019-03-13T23:57:29.529463900}
+2019-03-13 23:57:29,530 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse3', breed='Not Specified', minSpeed=45.0, maxSpeed=55.0, created=2019-03-13T23:57:29.529463900, updated=2019-03-13T23:57:29.529463900}
+2019-03-13 23:57:29,530 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,531 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,531 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 3 is successfully inserted.
+2019-03-13 23:57:29,532 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-13 23:57:29,532 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-13 23:57:29,541 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:57:29,559 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:57:29.541432600, updated=2019-03-13T23:57:29.541432600}
+2019-03-13 23:57:29,560 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=2019-03-13T23:57:29.541432600, updated=2019-03-13T23:57:29.541432600}
+2019-03-13 23:57:29,560 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,561 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,563 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 1 is successfully inserted.
+2019-03-13 23:57:29,563 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:57:29,563 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:57:29,569 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:57:29,570 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:57:29.570355200, updated=2019-03-13T23:57:29.570355200}
+2019-03-13 23:57:29,570 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=2019-03-13T23:57:29.570355200, updated=2019-03-13T23:57:29.570355200}
+2019-03-13 23:57:29,570 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,571 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,572 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 2 is successfully inserted.
+2019-03-13 23:57:29,572 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:57:29,572 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:57:29,576 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:67] POST/api/v1/jockeys
+2019-03-13 23:57:29,577 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:39] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:57:29.577335800, updated=2019-03-13T23:57:29.577335800}
+2019-03-13 23:57:29,577 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:67] Insert jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=2019-03-13T23:57:29.577335800, updated=2019-03-13T23:57:29.577335800}
+2019-03-13 23:57:29,578 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,578 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,579 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:89] Jockey with id 3 is successfully inserted.
+2019-03-13 23:57:29,579 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.JockeyService [JockeyService.java:61] Jockey insertion validated.
+2019-03-13 23:57:29,579 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.JockeyEndpoint [JockeyEndpoint.java:72] Jockey insertion has been finished.
+2019-03-13 23:57:29,597 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.r.JockeyEndpoint [SimulationEndpoint.java:57] POST/api/v1/simulations
+2019-03-13 23:57:29,603 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.s.i.SimulationService [SimulationService.java:104] Insert simulation: SimulationInput{name='Simulation1', SimulationInput Participants=[SimulationInput Participant{horseId=1, jockeyId='1', luck factor=1.0}, SimulationInput Participant{horseId=2, jockeyId='2', luck factor=0.95}, SimulationInput Participant{horseId=3, jockeyId='3', luck factor=1.05}], created=2019-03-13T23:57:29.598279900}
+2019-03-13 23:57:29,603 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 1
+2019-03-13 23:57:29,604 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,606 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 1
+2019-03-13 23:57:29,606 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,608 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 2
+2019-03-13 23:57:29,609 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,610 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 2
+2019-03-13 23:57:29,610 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,611 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 3
+2019-03-13 23:57:29,612 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,613 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.JockeyDao [JockeyDao.java:42] Get jockey with id 3
+2019-03-13 23:57:29,613 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,614 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,615 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,616 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,616 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-13 23:57:29,617 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.s.i.SimulationService [SimulationService.java:121] Simulation insertion validated.
+2019-03-13 23:57:29,617 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.r.JockeyEndpoint [SimulationEndpoint.java:61] Simulation insertion has been finished.
+2019-03-13 23:57:29,639 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-13 23:57:29,655 INFO [Thread-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
