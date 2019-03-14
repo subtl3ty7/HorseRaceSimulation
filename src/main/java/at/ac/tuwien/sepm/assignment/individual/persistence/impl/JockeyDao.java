@@ -193,16 +193,16 @@ public class JockeyDao implements IJockeyDao{
         try {
             PreparedStatement statement;
             if (jockey.getId() == null) {
-                sql = "SELECT * FROM Jockey WHERE name LIKE %?% AND skill >= ?";
+                sql = "SELECT * FROM Jockey WHERE name LIKE ? AND skill >= ?";
                 statement = dbConnectionManager.getConnection().prepareStatement(sql);
-                statement.setString(1,jockey.getName());
+                statement.setString(1,"%" + jockey.getName() + "%");
                 statement.setDouble(2,jockey.getSkill());
 
             } else {
-                sql = "SELECT * FROM Jockey WHERE id = ? AND name LIKE %?% AND skill >= ?";
+                sql = "SELECT * FROM Jockey WHERE id = ? AND name LIKE ? AND skill >= ?";
                 statement = dbConnectionManager.getConnection().prepareStatement(sql);
                 statement.setInt(1,jockey.getId());
-                statement.setString(2,jockey.getName());
+                statement.setString(2,"%"+jockey.getName()+"%");
                 statement.setDouble(3,jockey.getSkill());
             }
 

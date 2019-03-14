@@ -207,19 +207,19 @@ public class HorseDao implements IHorseDao {
         try {
             PreparedStatement statement;
             if (horse.getId() == null) {
-                sql = "SELECT * FROM Horse WHERE name LIKE %?% AND breed LIKE %?% AND min_speed >= ? AND max_speed <= ?";
+                sql = "SELECT * FROM Horse WHERE name LIKE ? AND breed LIKE ? AND min_speed >= ? AND max_speed <= ?";
                 statement = dbConnectionManager.getConnection().prepareStatement(sql);
-                statement.setString(1,horse.getName());
-                statement.setString(2,horse.getBreed());
+                statement.setString(1,"%" + horse.getName()+ "%") ;
+                statement.setString(2,"%" + horse.getBreed()+ "%");
                 statement.setDouble(3,horse.getMinSpeed());
                 statement.setDouble(4,horse.getMaxSpeed());
 
             } else {
-                sql = "SELECT * FROM Horse WHERE id = ? AND name LIKE %?% AND breed LIKE %?% AND min_speed >= ? AND max_speed <= ?";
+                sql = "SELECT * FROM Horse WHERE id = ? AND name LIKE ? AND breed LIKE ? AND min_speed >= ? AND max_speed <= ?";
                 statement = dbConnectionManager.getConnection().prepareStatement(sql);
                 statement.setInt(1,horse.getId());
-                statement.setString(2,horse.getName());
-                statement.setString(3,horse.getBreed());
+                statement.setString(2,"%"+horse.getName()+"%");
+                statement.setString(3,"%"+horse.getBreed()+"%");
                 statement.setDouble(4,horse.getMinSpeed());
                 statement.setDouble(5,horse.getMaxSpeed());
             }
