@@ -1199,3 +1199,94 @@ DROP TABLE horse [42102-197]
 2019-03-12 19:56:15,871 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
 2019-03-12 19:56:15,877 INFO [Thread-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
 2019-03-12 19:56:15,877 INFO [Thread-15] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-12 20:05:24,896 INFO [main] a.a.t.s.a.i.i.HorseIntegrationTest [StartupInfoLogger.java:50] Starting HorseIntegrationTest on DESKTOP-J013F5H with PID 15768 (started by egede in C:\Users\egede\OneDrive\Masaüstü\UNI\SEPM\Individual Assignment\sepm-individual-assignment-java-template)
+2019-03-12 20:05:24,899 DEBUG [main] a.a.t.s.a.i.i.HorseIntegrationTest [StartupInfoLogger.java:53] Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2019-03-12 20:05:24,900 INFO [main] a.a.t.s.a.i.i.HorseIntegrationTest [SpringApplication.java:679] The following profiles are active: test
+2019-03-12 20:05:26,819 INFO [main] a.a.t.s.a.i.i.HorseIntegrationTest [StartupInfoLogger.java:59] Started HorseIntegrationTest in 2.223 seconds (JVM running for 3.355)
+2019-03-12 20:05:27,275 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-12 20:05:27,296 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=2019-03-12T20:05:27.281789200, updated=2019-03-12T20:05:27.282774100}
+2019-03-12 20:05:27,296 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=2019-03-12T20:05:27.281789200, updated=2019-03-12T20:05:27.282774100}
+2019-03-12 20:05:27,297 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,297 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:54] Establish database connection
+2019-03-12 20:05:27,437 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,446 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 1 is successfully inserted.
+2019-03-12 20:05:27,446 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-12 20:05:27,447 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-12 20:05:27,470 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-12 20:05:27,470 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse2', breed='null', minSpeed=40.0, maxSpeed=60.0, created=2019-03-12T20:05:27.470273300, updated=2019-03-12T20:05:27.470273300}
+2019-03-12 20:05:27,471 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse2', breed='Not Specified', minSpeed=40.0, maxSpeed=60.0, created=2019-03-12T20:05:27.470273300, updated=2019-03-12T20:05:27.470273300}
+2019-03-12 20:05:27,471 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,483 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,484 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 2 is successfully inserted.
+2019-03-12 20:05:27,485 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-12 20:05:27,485 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-12 20:05:27,492 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:130] DELETE/api/v1/horses
+2019-03-12 20:05:27,493 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.s.i.HorseService [HorseService.java:135] Delete horse id: 1
+2019-03-12 20:05:27,494 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:154] Delete horse with id 1
+2019-03-12 20:05:27,494 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 1
+2019-03-12 20:05:27,494 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,496 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,499 INFO [http-nio-auto-1-exec-3] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:163] Deleted horse with id 1
+2019-03-12 20:05:27,504 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.s.i.HorseService [HorseService.java:148] Get all horses
+2019-03-12 20:05:27,505 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:175] Get all Horses
+2019-03-12 20:05:27,505 INFO [http-nio-auto-1-exec-4] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,513 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-12 20:05:27,523 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-12 20:05:27,524 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=2019-03-12T20:05:27.524129200, updated=2019-03-12T20:05:27.524129200}
+2019-03-12 20:05:27,524 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=2019-03-12T20:05:27.524129200, updated=2019-03-12T20:05:27.524129200}
+2019-03-12 20:05:27,524 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,524 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:54] Establish database connection
+2019-03-12 20:05:27,529 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,530 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 1 is successfully inserted.
+2019-03-12 20:05:27,531 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-12 20:05:27,531 INFO [http-nio-auto-1-exec-5] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-12 20:05:27,536 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-12 20:05:27,537 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse2', breed='null', minSpeed=40.0, maxSpeed=60.0, created=2019-03-12T20:05:27.537095200, updated=2019-03-12T20:05:27.537095200}
+2019-03-12 20:05:27,537 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse2', breed='Not Specified', minSpeed=40.0, maxSpeed=60.0, created=2019-03-12T20:05:27.537095200, updated=2019-03-12T20:05:27.537095200}
+2019-03-12 20:05:27,537 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,539 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,540 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 2 is successfully inserted.
+2019-03-12 20:05:27,540 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-12 20:05:27,540 INFO [http-nio-auto-1-exec-6] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-12 20:05:27,544 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.s.i.HorseService [HorseService.java:148] Get all horses
+2019-03-12 20:05:27,544 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:175] Get all Horses
+2019-03-12 20:05:27,544 INFO [http-nio-auto-1-exec-7] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,547 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-12 20:05:27,555 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-12 20:05:27,556 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=2019-03-12T20:05:27.556043500, updated=2019-03-12T20:05:27.556043500}
+2019-03-12 20:05:27,556 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=2019-03-12T20:05:27.556043500, updated=2019-03-12T20:05:27.556043500}
+2019-03-12 20:05:27,556 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,556 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:54] Establish database connection
+2019-03-12 20:05:27,560 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,561 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 1 is successfully inserted.
+2019-03-12 20:05:27,562 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-12 20:05:27,562 INFO [http-nio-auto-1-exec-8] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-12 20:05:27,566 INFO [http-nio-auto-1-exec-9] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:46] GET /api/v1/horses/1
+2019-03-12 20:05:27,567 INFO [http-nio-auto-1-exec-9] a.a.t.s.a.i.s.i.HorseService [HorseService.java:29] Get horse with id 1
+2019-03-12 20:05:27,567 INFO [http-nio-auto-1-exec-9] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:47] Get horse with id 1
+2019-03-12 20:05:27,567 INFO [http-nio-auto-1-exec-9] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,570 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-12 20:05:27,576 INFO [http-nio-auto-1-exec-10] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-12 20:05:27,577 INFO [http-nio-auto-1-exec-10] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=2019-03-12T20:05:27.577984100, updated=2019-03-12T20:05:27.577984100}
+2019-03-12 20:05:27,577 INFO [http-nio-auto-1-exec-10] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=2019-03-12T20:05:27.577984100, updated=2019-03-12T20:05:27.577984100}
+2019-03-12 20:05:27,577 INFO [http-nio-auto-1-exec-10] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,577 INFO [http-nio-auto-1-exec-10] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:54] Establish database connection
+2019-03-12 20:05:27,581 INFO [http-nio-auto-1-exec-10] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,582 INFO [http-nio-auto-1-exec-10] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 1 is successfully inserted.
+2019-03-12 20:05:27,582 INFO [http-nio-auto-1-exec-10] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-12 20:05:27,583 INFO [http-nio-auto-1-exec-10] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-12 20:05:27,586 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.s.i.HorseService [HorseService.java:148] Get all horses
+2019-03-12 20:05:27,586 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:175] Get all Horses
+2019-03-12 20:05:27,586 INFO [http-nio-auto-1-exec-1] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,589 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-12 20:05:27,597 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:68] POST/api/v1/horses
+2019-03-12 20:05:27,597 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:40] Insert horse: HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=2019-03-12T20:05:27.597931100, updated=2019-03-12T20:05:27.597931100}
+2019-03-12 20:05:27,598 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:73] Insert horse: HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=2019-03-12T20:05:27.597931100, updated=2019-03-12T20:05:27.597931100}
+2019-03-12 20:05:27,598 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,598 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:54] Establish database connection
+2019-03-12 20:05:27,602 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:30] Get database connection
+2019-03-12 20:05:27,603 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.p.i.HorseDao [HorseDao.java:97] Horse with id 1 is successfully inserted.
+2019-03-12 20:05:27,603 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.s.i.HorseService [HorseService.java:74] Horse insertion validated.
+2019-03-12 20:05:27,603 INFO [http-nio-auto-1-exec-2] a.a.t.s.a.i.r.HorseEndpoint [HorseEndpoint.java:73] Horse insertion has been finished.
+2019-03-12 20:05:27,605 INFO [main] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
+2019-03-12 20:05:27,610 INFO [Thread-2] a.a.t.s.a.i.p.u.DBConnectionManager [DBConnectionManager.java:43] Close database connection
