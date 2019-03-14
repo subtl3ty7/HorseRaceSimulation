@@ -21,3 +21,21 @@ CREATE TABLE IF NOT EXISTS jockey (
   updated   DATETIME     NOT NULL
 
 );
+
+
+CREATE TABLE IF NOT EXISTS simulation (
+
+  id          BIGINT       NOT NULL,
+  name        VARCHAR(255) NOT NULL,
+  created     DATETIME     NOT NULL,
+  horseName   VARCHAR(255) NOT NULL,
+  jockeyName  VARCHAR(255) NOT NULL,
+  avgSpeed    DOUBLE       NOT NULL,
+  horseSpeed  DOUBLE       NOT NULL,
+  skill       DOUBLE       NOT NULL,
+  luckFactor  DOUBLE       NOT NULL,
+  rank        BIGINT       NOT NULL
+
+);
+
+
