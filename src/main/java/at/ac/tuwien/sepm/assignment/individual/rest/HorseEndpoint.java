@@ -168,8 +168,8 @@ public class HorseEndpoint {
     @RequestMapping(method = RequestMethod.GET,params = {"name","breed","minSpeed","maxSpeed"})
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public List<HorseDto> getAllHorsesFiltered(@PathVariable("name") String name,@PathVariable("breed") String breed,
-                                               @PathVariable("minSpeed") Double minSpeed, @PathVariable("maxSpeed") Double maxSpeed) {
+    public List<HorseDto> getAllHorsesFiltered(@RequestParam("name") String name,@RequestParam("breed") String breed,
+                                               @RequestParam("minSpeed") Double minSpeed, @RequestParam("maxSpeed") Double maxSpeed) {
         try {
             HorseDto horseDTO = new HorseDto(null,name,breed,minSpeed,maxSpeed,null,null);
             return horseMapper.listEntityToDTO(horseService.getAllHorsesFiltered(horseMapper.dtoToEntity(horseDTO)));

@@ -171,7 +171,7 @@ public class JockeyEndpoint {
     @RequestMapping(method = RequestMethod.GET,params = {"name","skill"})
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public List<JockeyDto> getAllJockeysFiltered(@PathVariable("name") String name,@PathVariable("skill") Double skill ) {
+    public List<JockeyDto> getAllJockeysFiltered(@RequestParam("name") String name,@RequestParam("skill") Double skill ) {
         try {
             JockeyDto jockeyDTO = new JockeyDto(null,name,skill,null,null);
             return jockeyMapper.listEntityToDTO(jockeyService.getAllJockeysFiltered(jockeyMapper.dtoToEntity(jockeyDTO)));
