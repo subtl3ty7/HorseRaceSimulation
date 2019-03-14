@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @RestController
@@ -34,22 +35,30 @@ public class SimulationEndpoint {
         this.simulationResultMapper = simulationResultMapper;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public SimulationResultDto getOneById(@PathVariable("id") Integer id) {
+        LOGGER.info("GET " + BASE_URL + "/" + id);
+        try {
+            return simulationResultMapper.entityToDto(simulationService.getOneById(id));
+        } catch (ServiceException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error during read simulation with id " + id, e);
+        } catch (NotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error during reading simulation: " + e.getMessage(), e);
+        }
+    }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     *
+     * @param simulation
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
@@ -72,6 +81,41 @@ public class SimulationEndpoint {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error during inserting: " + e.getMessage(), e);
         }
 
+
+    }
+
+
+
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<SimulationResultDto> getAllSimulations() {
+        try {
+            return simulationResultMapper.listEntityToDTO(simulationService.getAllSimulations());
+        } catch (ServiceException e) {
+            LOGGER.error("Error during getting simulations.");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"Error during getting simulations",e);
+        } catch (NotFoundException e){
+            LOGGER.error("Error during reading simulations.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error during getting simulations: " + e.getMessage(), e);
+        }
+    }
+
+
+
+    @RequestMapping(method = RequestMethod.GET,params = {"name"})
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<SimulationResultDto> getAllSimulationsFiltered(@RequestParam("name") String name) {
+        try {
+            return simulationResultMapper.listEntityToDTO(simulationService.getAllSimulationsFiltered(name));
+        } catch (ServiceException e) {
+            LOGGER.error("Error during getting jockeys.");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"Error during getting jockeys",e);
+        } catch (NotFoundException e){
+            LOGGER.error("Error during reading jockeys.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error during getting jockeys: " + e.getMessage(), e);
+        }
 
     }
 
