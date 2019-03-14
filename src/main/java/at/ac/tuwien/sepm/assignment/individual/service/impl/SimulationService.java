@@ -31,6 +31,17 @@ public class SimulationService implements ISimulationService {
         this.jockeyDao = jockeyDao;
     }
 
+    @Override
+    public SimulationResult getOneById( Integer id) throws ServiceException,NotFoundException {
+        LOGGER.info("Get simulation with id " + id);
+        try {
+            return simulationDao.getOneById(id);
+        } catch (PersistenceException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
+
+
+    }
 
     @Override
     public SimulationResult simulate(SimulationInput simulation) throws ServiceException,NotFoundException {
@@ -159,4 +170,36 @@ public class SimulationService implements ISimulationService {
         }
 
     }
+
+    @Override
+    public List<SimulationResult> getAllSimulations() throws ServiceException, NotFoundException {
+        LOGGER.info("Get all simulations");
+        try {
+            return simulationDao.getAllSimulations();
+        }
+        catch (PersistenceException e) {
+            throw new ServiceException(e.getMessage(),e);
+        }
+
+
+    }
+
+
+
+     @Override
+    public List<SimulationResult> getAllSimulationsFiltered(String name) throws ServiceException, NotFoundException {
+        LOGGER.info("Get all simulations with filter: " + name);
+
+        if(name == null){
+            name = "";
+        }
+
+        try {
+            return simulationDao.getAllSimulationsFiltered(name);
+        } catch(PersistenceException e) {
+            throw new ServiceException(e.getMessage(),e);
+        }
+    }
+
 }
+
