@@ -58,6 +58,13 @@ public interface IJockeyDao {
      */
     List<Jockey> getAllJockeys() throws PersistenceException, NotFoundException;
 
+    /**
+     * Returns a filtered list of all the jockeys in database.
+     * @param jockey is the filtered Jockey
+     * @return is the List of Jockeys matching the filter criteria
+     * @throws PersistenceException will be thrown if something goes wrong during the database access.
+     * @throws NotFoundException will be thrown if database is empty or a Jockey could not be found with matching filters.
+     */
 
     List<Jockey> getAllJockeysFiltered(Jockey jockey) throws PersistenceException, NotFoundException;
 }
