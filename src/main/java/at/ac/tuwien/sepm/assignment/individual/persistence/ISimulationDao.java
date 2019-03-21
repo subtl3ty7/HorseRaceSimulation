@@ -23,6 +23,21 @@ public interface ISimulationDao {
      * @throws PersistenceException will be thrown if something goes wrong during the database access.
      */
     SimulationResult insertSimulationResultToDB(SimulationResult simulationResult) throws PersistenceException;
+
+    /**
+     * Returns all the simulations in database.
+     * @return is the all simulations.
+     * @throws PersistenceException will be thrown if something goes wrong during the database access.
+     * @throws NotFoundException will be thrown if database is empty.
+     */
     List<SimulationResult> getAllSimulations() throws PersistenceException, NotFoundException;
+
+    /**
+     * Returns all the simulations corresponding to the name filter.
+     * @param name is the string to filter the name
+     * @return is the filtered  simulations.
+     * @throws PersistenceException will be thrown if something goes wrong during the database access.
+     * @throws NotFoundException will be thrown if database is empty or a Simulation could not be found with matching filter.
+     */
     List<SimulationResult> getAllSimulationsFiltered(String name) throws PersistenceException, NotFoundException;
 }
