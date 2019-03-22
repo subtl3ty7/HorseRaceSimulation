@@ -36,9 +36,12 @@ public class SimulationEndpoint {
     }
 
     /**
+     * Finds a simulation by its id by passing the id to Service Layer.
+     * If successful, returns the DTO transformed seeked SimulationResult.
+     * Mapped to HTTP GET requests from client.
      *
-     * @param id
-     * @return
+     * @param id which belongs to the simulation user wants to find.
+     * @return SimulationResultDTO of the found simulation.
      */
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -55,9 +58,11 @@ public class SimulationEndpoint {
 
 
     /**
+     * Gets a SimulationInput DTO and passes it to Service Layer for Validation and Business Logic.
+     * Mapped to HTTP POST requests from client.
      *
-     * @param simulation
-     * @return
+     * @param simulation is the DTO which we want to insert the database.
+     * @return SimulationResultDTO of the inserted simulation.
      */
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
@@ -84,7 +89,12 @@ public class SimulationEndpoint {
 
     }
 
-
+    /**
+     * Returns all the simulations from database.
+     * Mapped to HTTP GET requests from client.
+     *
+     * @return value is the list of all simulations.
+     */
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
@@ -101,7 +111,11 @@ public class SimulationEndpoint {
         }
     }
 
-
+    /**
+     * Gets name param for filtering out simulations and returns the list containing filtered simulations.
+     * @param name pattern to filter.
+     * @return value is the list of SimulationDTOs.
+     */
 
     @RequestMapping(method = RequestMethod.GET,params = {"name"})
     @ResponseStatus(HttpStatus.OK)
