@@ -61,5 +61,12 @@ public interface IJockeyService {
      */
     List<Jockey> getAllJockeys() throws ServiceException, NotFoundException;
 
+    /**
+     * Returns all the filtered jockeys from database.
+     *
+     * @return value is the list of all filtered Jockeys.
+     * @throws ServiceException will be thrown if something goes wrong during the data processing.
+     * @throws NotFoundException will be thrown if there is no jockey in the system.
+     */
     List<Jockey> getAllJockeysFiltered(Jockey jockey) throws ServiceException, NotFoundException;
 }
