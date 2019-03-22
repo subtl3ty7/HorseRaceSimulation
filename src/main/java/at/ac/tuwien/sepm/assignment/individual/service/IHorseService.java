@@ -61,5 +61,12 @@ public interface IHorseService {
      */
     List<Horse> getAllHorses() throws ServiceException, NotFoundException;
 
+    /**
+     * Returns all th filtered horses from database.
+     *
+     * @return value is the list of all filtered Horses.
+     * @throws ServiceException will be thrown if something goes wrong during the data processing.
+     * @throws NotFoundException will be thrown if there is no horse in the system.
+     */
     List<Horse> getAllHorsesFiltered(Horse horse) throws ServiceException, NotFoundException;
 }
