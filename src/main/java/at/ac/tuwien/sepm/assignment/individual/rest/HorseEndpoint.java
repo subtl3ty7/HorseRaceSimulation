@@ -164,7 +164,14 @@ public class HorseEndpoint {
         }
     }
 
-
+    /**
+     *  Gets specific params for filtering out horses and returns the list containing filtered horses.
+     * @param name pattern to filter.
+     * @param breed pattern to filter.
+     * @param minSpeed value to filter.
+     * @param maxSpeed value to filter.
+     * @return value is the list of HorseDTOs.
+     */
     @RequestMapping(method = RequestMethod.GET,params = {"name","breed","minSpeed","maxSpeed"})
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
