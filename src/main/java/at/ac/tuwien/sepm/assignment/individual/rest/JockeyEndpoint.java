@@ -168,6 +168,13 @@ public class JockeyEndpoint {
     }
 
 
+    /**
+     * Gets specific params for filtering out jockeys and returns the list containing filtered jockeys.
+     * @param name pattern to filter.
+     * @param skill value to filter.
+     * @return value is the list of JockeyDTOs.
+     */
+
     @RequestMapping(method = RequestMethod.GET,params = {"name","skill"})
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
