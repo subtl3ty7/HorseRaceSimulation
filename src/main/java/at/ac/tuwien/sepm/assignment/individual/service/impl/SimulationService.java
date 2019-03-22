@@ -45,33 +45,61 @@ public class SimulationService implements ISimulationService {
 
     @Override
     public SimulationResult simulate(SimulationInput simulation) throws ServiceException,NotFoundException {
+        //CREATING A SIMULATION RESULT OBJECT WITH ONLY NAME AND CREATION DATE FROM INPUT.
         SimulationResult simResult = new SimulationResult(null,simulation.getName(),simulation.getCreated(),null);
+        //CREATING A LIST TO STORE HORSE JOCKEY COMBINATIONS THAT WILL PARTICIPATE IN THE SIMULATION.
         List<HorseJockeyCombination> horseJockeyCombinations = new ArrayList<>();
         try {
+            //FOR EVERY SIMULATION PARTICIPANT FROM OUR INPUT..
             for (SimulationParticipant p : simulation.getSimulationParticipants()) {
+                //..GET THE HORSE ID
                 int horseId = p.getHorseId();
+                //..GET THE JOCKEY ID
                 int jockeyId = p.getJockeyId();
+                //..CHECK IF THAT HORSE AND JOCKEY EXISTS IN DATABASE, IF SO THEN ASSIGN THEM AS OBJECTS.
                 Horse horse = horseDao.findOneById(horseId);
                 Jockey jockey = jockeyDao.findOneById(jockeyId);
-                horseJockeyCombinations.add(new HorseJockeyCombination(0,horse.getName(),
+                /*THIS SEEMS SPAGETTHI CODE BUT TO BREAK IT DOWN:
+                IN EVERY ITERATION WE CREATE A HORSE JOCKEY COMBINATION FROM THE HORSE AND JOCKEY OBJECTS WE ASSIGNED,
+                SET THE ID OF HORSE/JOCKEY AND ADD COMBINATION TO LIST.
+                IN THE HORSE JOCKEY COMBINATION CONSTRUCTOR, WE CALL THE SPECIAL METHODS FOR CALCULATING AVERAGE SPEED,
+                 SPEED AND SKILL ETC.
+                */
+                HorseJockeyCombination hj = new HorseJockeyCombination(0,horse.getName(),
                     jockey.getName(),
                     calculateAvgSpeed(calculateSpeed(horse.getMinSpeed(),horse.getMaxSpeed(),p.getLuckFactor()),
                         calculateJockeySkill(jockey.getSkill()), p.getLuckFactor()), calculateSpeed(horse.getMinSpeed(),horse.getMaxSpeed(),p.getLuckFactor()),
                     calculateJockeySkill(jockey.getSkill()),
-                    p.getLuckFactor()));
+                    p.getLuckFactor());
+                hj.setHorseId(horseId);
+                hj.setJockeyId(jockeyId);
+                horseJockeyCombinations.add(hj);
+
+                //WE NEED TO CHECK IF THE SAME JOCKEY AND HORSE IS USED TWICE OR NOT. IF SO THEN WE NEED TO THROW AN EXCEPTION.
+                for (HorseJockeyCombination horj: horseJockeyCombinations) {
+                    if(horseId == horj.getHorseId() || jockeyId == horj.getJockeyId()){
+                        LOGGER.error("A horse or a jockey can not participate in a simulation more than 1 time.");
+                        throw new IllegalArgumentException("A Horse or a Jockey can not participate more than once!");
+                    }
+                }
             }
 
-
+            //WE COPY THE AVERAGE SPEEDS TO A NEW ARRAY FOR SORTING PURPOSES.
             List<Double> copyOfAvgSpeeds = new ArrayList<>();
-
             for (HorseJockeyCombination hj : horseJockeyCombinations) {
                 copyOfAvgSpeeds.add(hj.getAvgSpeed());
             }
-
+            //SORT THE AVERAGE SPEEDS FROM HIGHEST TO LOWEST.
             Collections.sort(copyOfAvgSpeeds, Collections.reverseOrder());
 
-            int ind = 0;
-            List<HorseJockeyCombination> horseJockeyCombinationResult = new ArrayList<>(); //to avoid duplicate loophole
+
+            int ind = 0; //HELPER INDEX FOR RANK SETTING
+            //THE PROBLEM WITH MATCHING THE AVERAGE SPEED AGAIN WITH THE COMBINATIONS IS THAT IF THERE IS A DUPLICATE
+            //VALUE, THEN THE NESTED LOOP WILL ALWAYS REACH THE FIRST VALUE THAT HAS THE DUPLICATE AND WILL NEVER REACH
+            //THE OTHERS. TO PREVENT THAT WE CREATE ANOTHER LIST AND ONCE WE ARE DONE MATCHING A COMBINATION, WE DELETE
+            //IT FROM THE LIST AND ADD IT TO A NEW LIST.
+            // DURING MATCHING WE SET THE RANK AS INDEX+1
+            List<HorseJockeyCombination> horseJockeyCombinationResult = new ArrayList<>();
             for (Double avgSpeed : copyOfAvgSpeeds) {
                 for (int i = 0; i < horseJockeyCombinations.size(); i++) {
                     if (avgSpeed == horseJockeyCombinations.get(i).getAvgSpeed()) {
@@ -82,9 +110,10 @@ public class SimulationService implements ISimulationService {
                     }
                 }
             }
-
+            //FINALLY SETTING THE SIMULATION RESULTS HORSE JOCKEY COMBINATION LIST
             simResult.setHorseJockeyCombinations(horseJockeyCombinationResult);
 
+            //RETURN THE CALCULATED SIMULATION.
             return simResult;
         } catch(PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
@@ -95,32 +124,45 @@ public class SimulationService implements ISimulationService {
 
     @Override
     public Double calculateSpeed (Double horseMin, Double horseMax, Double luckFactor){
+
         if(luckFactor < 0.95 || luckFactor > 1.05){
             LOGGER.error("Problem with an Argument!");
             throw new IllegalArgumentException("Luck Factor are out of bounds!");
         }
+        //GIVEN FORMULA FOR CALCULATING SPEED.
         Double p = (luckFactor - 0.95)* (horseMax - horseMin)/(1.05-0.95)+horseMin;
         return truncateAndRound(p);
     }
 
     @Override
     public Double truncateAndRound (Double input){
+        //WE CHANGE OUR DOUBLE INPUT TO A STRING FOR EASY TRUNCATION.
         String x= input+"";
 
+        //IF ITS LENGTH IS SMALLER THAN 7, THEN WE RETURN THE INPUT MEANING THERE IS NO NEED FOR TRUNCATION.
         if(x.length() < 7){
             return input;
         }
 
+        // WE NEED TO KNOW THE INDEX OF . TO UNDERSTAND WHERE TO START TRUNCATING.
         int shifter = x.indexOf('.');
+        // SO WE TRUNCATE IT FROM BEGINNING UNTIL 4TH DECIMAL PLACE PLUS SHIFTER (WHERE COMMA IS)
+        // SO FOR EXAMPLE:
+        // 1.41000000 - SHIFTER = 1   TO TRUNCATE IT UNTIL 4TH DECIMAL PLACE, WHICH IS INDEX 6, WE NEED TO ADD SHIFTER TO IT.
+        // 6 + SHIFTER (1) = 7
+        // 1.4100
         String truncate = x.substring(0,6 + shifter);
         Double d;
+        //WE CONVERT THE LAST 5TH DECIMAL ON OUR INPUT TO SEE IF WE ARE GONNA ROUND THE 4TH DECIMAL UP OR DOWN.
         Integer index = Integer.parseInt(x.charAt(5 + shifter)+"");
+        //IF THE 5TH DECIMAL IS BIGGER THAN 4, WE ADD TO OUR TRUNCATED NUMBER 0.001 * (0.1)^shifter
         if(index >4){
             String ceil = truncate.substring(0,5 + shifter);
             d = Double.parseDouble(ceil);
             d = d + 0.001 * (Math.pow(0.1,shifter));
             return d;
         }
+        //IF ITS LOWER THAN OR EQUAL TO 4, WE JUST TRUNCATE IT WITHOUT TOUCHING THE 4TH DECIMAL.
         else {
             String floored = truncate.substring(0,5 + shifter);
             d = Double.parseDouble(floored);
@@ -132,13 +174,15 @@ public class SimulationService implements ISimulationService {
 
     @Override
     public Double calculateJockeySkill(Double skill){
+        //GIVEN FORMULA FOR CALCULATING SKILL.
         Double k = 1.0 + (0.15 * 1/Math.PI * Math.atan(1/5.0*(skill)));
         return truncateAndRound(k);
     }
 
     @Override
     public Double calculateAvgSpeed (Double horseSpeed, Double jockeySkill, Double luckFactor){
-        return truncateAndRound(horseSpeed*jockeySkill*luckFactor);   //implement rounding later
+        //GIVEN FORMULA FOR CALCULATING AVERAGE SPEED.
+        return truncateAndRound(horseSpeed*jockeySkill*luckFactor);
     }
 
 
