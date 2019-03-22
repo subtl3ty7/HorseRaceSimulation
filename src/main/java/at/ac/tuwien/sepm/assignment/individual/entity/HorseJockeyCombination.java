@@ -10,7 +10,8 @@ public class HorseJockeyCombination {
     private Double horseSpeed;
     private Double skill;
     private Double luckFactor;
-
+    private Integer horseId;
+    private Integer jockeyId;
     public HorseJockeyCombination() {}
 
 
@@ -45,12 +46,28 @@ public class HorseJockeyCombination {
         return rank;
     }
 
+    public Integer getHorseId() {
+        return horseId;
+    }
+
+    public Integer getJockeyId() {
+        return jockeyId;
+    }
+
     public String getHorseName() {
         return horseName;
     }
 
     public String getJockeyName() {
         return jockeyName;
+    }
+
+    public void setHorseId(Integer horseId) {
+        this.horseId = horseId;
+    }
+
+    public void setJockeyId(Integer jockeyId) {
+        this.jockeyId = jockeyId;
     }
 
     public void setAvgSpeed(Double avgSpeed) {
