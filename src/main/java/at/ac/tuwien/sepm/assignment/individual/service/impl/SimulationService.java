@@ -75,13 +75,6 @@ public class SimulationService implements ISimulationService {
                 hj.setJockeyId(jockeyId);
                 horseJockeyCombinations.add(hj);
 
-                //WE NEED TO CHECK IF THE SAME JOCKEY AND HORSE IS USED TWICE OR NOT. IF SO THEN WE NEED TO THROW AN EXCEPTION.
-                for (HorseJockeyCombination horj: horseJockeyCombinations) {
-                    if(horseId == horj.getHorseId() || jockeyId == horj.getJockeyId()){
-                        LOGGER.error("A horse or a jockey can not participate in a simulation more than 1 time.");
-                        throw new IllegalArgumentException("A Horse or a Jockey can not participate more than once!");
-                    }
-                }
             }
 
             //WE COPY THE AVERAGE SPEEDS TO A NEW ARRAY FOR SORTING PURPOSES.
